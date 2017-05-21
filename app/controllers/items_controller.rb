@@ -1,8 +1,9 @@
 class ItemsController < ApplicationController
-  def show
+  def index
+    @all_items = Item.all
   end
 
-  def index
+  def show
   end
 
   def new
