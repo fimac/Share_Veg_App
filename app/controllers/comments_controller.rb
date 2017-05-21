@@ -1,13 +1,24 @@
 class CommentsController < ApplicationController
-  def show
+
+  def create
+    @item = Item.find(params[:item_id])
+    @comment = @item.comments.new(comment_params)
+    @comment.user = @current_user
+    @comment.save
+
+    redirect_to item_path(@item)
   end
 
-  def index
+  def destroy
+    @item = Item.find(params[:item_id])
+    @comment = @item.comments.find(params[:id])
+    @comment.destroy
+    redirect_to item_path(@item)
+
   end
 
-  def new
-  end
-
-  def edit
+  private
+  def comment_params
+    params.require(:comment).permit(:user_id, :post)
   end
 end
