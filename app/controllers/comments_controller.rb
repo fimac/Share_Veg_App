@@ -1,9 +1,4 @@
 class CommentsController < ApplicationController
-  def show
-  end
-
-  def index
-  end
 
   def create
     @item = Item.find(params[:item_id])
@@ -19,7 +14,6 @@ class CommentsController < ApplicationController
     @comment = @item.comments.find(params[:id])
     @comment.destroy
     redirect_to item_path(@item)
-  end
 
   private
   def comment_params
