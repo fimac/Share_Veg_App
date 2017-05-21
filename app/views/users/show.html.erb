@@ -2,7 +2,7 @@
   <h1><%= @user.name %></h1>
 
   <div>
-
+    <%= image_tag( @user.image ) %>
   </div>
 
   <ul>
@@ -10,7 +10,6 @@
     <li>Email: <%= @user.email %></li>
     <li>Phone number: </li>
     <li>Location: </li>
-    <li>image_tag<%= ( @user.image ) %></li>
 
     <li>About me: <%= @user.bio %></li>
     <li>Likes: <%= @user.likes %></li>

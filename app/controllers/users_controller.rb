@@ -25,6 +25,12 @@ class UsersController < ApplicationController
     else
       render :new # Show them the Sign Up form again
     end
+    cloudinary = Cloudinary::Uploader.upload( params[ "user" ][ "link" ] )
+    @user.image = cloudinary["url"]
+    @user = @current_user
+    @user.save
+
+    redirect_to "/users/#{user.id}"
   end
 
   def edit
