@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'session/new'
+
 root to: "pages#home"
 
 get '/login' => 'session#new'
