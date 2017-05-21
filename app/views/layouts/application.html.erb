@@ -6,9 +6,43 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
 
   <body>
+    <nav class="z-depth-0 white"> <!-- removes drop shadow -->
+      <div class="container"> <!-- wraps everything so that it's not full width of screen -->
+        <div class="nav-wrapper">
+          <a href="/" class="brand-logo">ShareVego</a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+
+          <ul class="right hide-on-med-and-down">
+            <li><a href="#">Sass</a></li>
+            <li><a href="#">Components</a></li>
+            <li><a href="#">Javascript</a></li>
+            <li><a href="#">Login</a></li>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <li><a href="#">Sass</a></li>
+            <li><a href="#">Components</a></li>
+            <li><a href="#">Javascript</a></li>
+            <li><a href="#">Login</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+  <main> <!-- check main css -->
     <%= yield %>
+  </main>
+
+  <footer class="page-footer grey lighten-3">
+    <div class="footer-copyright light-green darken-1">
+      <div class="container">
+      © 2017 ShareVego. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
   </body>
 </html>
