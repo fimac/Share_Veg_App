@@ -32,21 +32,20 @@ class UsersController < ApplicationController
   end
 
   def update
-    project = Project.find_by(id: params["id"])
-    project.update( project_strong_params() )
-    redirect_to "/projects/#{project.id}"
+    user = User.find_by( id: params['id'] )
+    user.update ( user_params )
+    redirect_to "/users/#{user.id}"
   end
 
   def destroy
-    projecy = Project.find_by(id: params["id"])
-    project.destroy
-    redirect_to "/projects"
+    user = User.find_by( id: params['id'] )
+    user.destroy
+    redirect_to "/users"
   end
 
    private
-
       def user_params
-        params.require(:user).permit(:name, :email, :password, :password_confirmation)
+        params.require(:user).permit(:name, :email, :password, :password_confirmation, :bio)
       end
 
       def check_if_logged_out

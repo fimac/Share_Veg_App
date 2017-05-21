@@ -39,3 +39,15 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:user_id, :name, :description, :image)
   end
 end
+
+# Search code
+
+# def index
+#   # if params["occassion"] is defined
+#   if params[:occasion].present?
+#   # @products should be all products where the name field matches params["name"]
+#     @products = Product.where(:occasion => params[:occasion])
+#     # Product.where(occasion_field, "<%#{params[:occasion]}%>")
+#   else
+#     @products = Product.search(params[:search])
+#   end
