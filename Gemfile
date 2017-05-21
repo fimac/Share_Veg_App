@@ -33,10 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-<<<<<<< HEAD
-=======
 
->>>>>>> 64a1904791f7698167feb3e191b394564819e877
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
