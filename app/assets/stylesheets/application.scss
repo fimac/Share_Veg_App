@@ -1,0 +1,124 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ @import "materialize/components/color";
+ $primary-color: color("blue", "lighten-2") !default;
+ $secondary-color: color("yellow", "base") !default;
+ @import 'materialize';
+
+
+body {
+   display: flex;
+   min-height: 100vh;
+   flex-direction: column;
+   font-size: 14px;
+   color: #757575;
+}
+
+nav .brand-logo {
+   color: #7cb342;
+}
+
+nav ul a {
+   color: #757575;
+}
+
+nav ul a:hover {
+   color: #7cb342;
+}
+
+main {
+   flex: 1 0 auto; // stretches the main section to always push down the footer
+ }
+
+.container {
+   width: 85%;
+}
+
+.material-icons {
+   color: #757575;
+}
+
+i.large{
+   font-size: 150px;
+   color: #7cb342;
+   margin-top: 13%;
+}
+
+.circle {
+    background: #c5e1a5;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.center {
+   text-align: center;
+   margin: 0 auto;
+}
+
+.box-white {
+   background-color: rgba(255,255,255,.8);
+}
+
+.hero {
+   background: image-url('O8RDQ80.jpg');
+   background-size: cover;
+   height: 55vh;
+   overflow: hidden;
+}
+
+.about {
+   height: 50vh;
+}
+
+h1 {
+   font-size: 35px;
+   text-transform: uppercase;
+   color: #7cb342;
+}
+
+h3 {
+   font-size: 16px;
+   line-height: 25px;
+   text-transform: capitalize;
+}
+
+p {
+   font-size: 14px;
+}
+
+.about p {
+   text-transform: uppercase;
+}
+
+a {
+   color: #757575;
+}
+
+button {
+   margin-top: 5px;
+   margin-bottom: 35px;
+}
+button a {
+   color: #ffffff;
+}
+
+.page-footer {
+   padding-top: 0;
+   margin-top: 50px;
+}
