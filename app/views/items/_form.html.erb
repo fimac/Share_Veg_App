@@ -1,21 +1,14 @@
-<%=   form_for @item do |f| %>
+<div class="container">
 
-  <p>
-      <%= f.label :name %>
-      <%= f.text_field :name, required: true%>
-  </p>
+  <%=   form_for @item do |f| %>
+    <%= f.text_field :name, required: true, placeholder: 'Name' %>
 
-  <p>
-      <%= f.label :description%>
-      <%= f.text_field :description%>
-  </p>
+    <%= f.text_field :description, placeholder: 'Description' %>
 
-  <p>
-      <%= f.label :image %>
-      <%= f.url_field :image %>
-  </p>
+    <%= f.url_field :image, placeholder: 'Image'  %>
 
+    <button class="btn waves-effect waves-light z-depth-0" type="submit" name="action"><%= f.submit %></button>
 
-  <%= f.submit %>
+  <% end %>
 
-<% end %>
+</div>
