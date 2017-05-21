@@ -17,16 +17,8 @@
           <%= f.email_field :email, required: true %>
         </p>
         <p>
-          <%= f.label :location %>
-          <%= f.text_field :location, required: true %>
-        </p>
-        <p>
           <%= f.label :image %>
           <%= f.url_field :image, required: false %>
-        </p>
-        <p>
-          <%= f.label :produce %>
-          <%= f.text_field :skills, required: false %>
         </p>
         <p>
           <%= f.label :password %>
@@ -36,7 +28,6 @@
           <%= f.label :password_confirmation %>
           <%= f.password_field :password_confirmation, required: true %>
         </p>
-
           <button>Submit</button>
       <% end %>
 </div>

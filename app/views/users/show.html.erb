@@ -7,9 +7,18 @@
 
   <ul>
     <li>Name: <%= @user.name %></li>
-    <li>Contact Me: <%= @user.email %></li>
+    <li>Email: <%= @user.email %></li>
+    <li>Phone number: </li>
+    <li>Location: </li>
+
+    <li>About me: <%= @user.bio %></li>
+    <li>Likes: <%= @user.likes %></li>
+    <li>Dislikes: <%= @user.dislikes %></li>
+    <li>Allegies: <%= @user.allergies %></li>
   </ul>
 </div>
+
+
 
 <div>
       <%= link_to("Edit Profile", "/users/#{@user.id}/edit") %>

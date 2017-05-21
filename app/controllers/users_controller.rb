@@ -32,18 +32,19 @@ class UsersController < ApplicationController
   end
 
   def update
-    item = Item.find_by(id: params["id"])
-    item.update( project_strong_params() )
-    redirect_to "/items/#{item.id}"
+    project = Project.find_by(id: params["id"])
+    project.update( project_strong_params() )
+    redirect_to "/projects/#{project.id}"
   end
 
   def destroy
-    item = Item.find_by(id: params["id"])
-    item.destroy
-    redirect_to "/items"
+    projecy = Project.find_by(id: params["id"])
+    project.destroy
+    redirect_to "/projects"
   end
 
    private
+
       def user_params
         params.require(:user).permit(:name, :email, :password, :password_confirmation)
       end
