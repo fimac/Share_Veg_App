@@ -11,6 +11,9 @@
                 <%= image_tag( @user.image ) %>
               </div>
             <%end %>
+
+
+
           </div>
 
           <div class="col s12 m8">
@@ -45,4 +48,5 @@
 
 <div class="container">
   <p>THIS IS WHERE ALL THE USER ITEMS WILL APPEAR</p>
+  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@user.latitude}%2C#{@user.longitude}" %>
 </div>
