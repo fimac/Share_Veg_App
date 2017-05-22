@@ -44,6 +44,7 @@ class UsersController < ApplicationController
     end
     user.save
 
+
     redirect_to "/users/#{user.id}"
   end
 
@@ -55,7 +56,7 @@ class UsersController < ApplicationController
 
    private
       def user_params
-        params.require(:user).permit(:name, :email, :password, :password_confirmation, :bio, :allergies, :likes, :dislikes)
+        params.require(:user).permit(:name, :email, :password, :password_confirmation, :bio, :allergies, :likes, :dislikes, :mobile, :building_number, :street, :city, :state, :country)
       end
 
       def check_if_logged_out
