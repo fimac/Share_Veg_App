@@ -1,10 +1,11 @@
 <div class="flex-height">
+<<<<<<< HEAD
   <div class="profile box-white-darken">
     <div class="container row">
 
       <h1><%= @user.name %></h1>
 
-      <div class="col s12 m6">
+      <div class="col s12 m9">
         <ul class="collection">
           <li></li>
           <li class="collection-item"><strong>Mobile: </strong><%= @user.mobile %></li>
@@ -21,6 +22,7 @@
         </ul>
       </div>
 
+
       <div class="col s12 m3 collection">
         <%if @user.image %>
           <div>
@@ -29,11 +31,6 @@
         <%end %>
       </div>
 
-      <div class="col s12 m3 collection">
-        <%if @user.image %>
-            <%= image_tag "http://maps.google.com/maps/api/staticmap?size=405x300&sensor=false&zoom=16&markers=#{@user.latitude}%2C#{@user.longitude}" %>
-        <%end %>
-      </div>
 
       <div class="controls">
         <% if @current_user && @current_user.id == @user.id  %>
@@ -49,5 +46,27 @@
 
 <div class="container">
   <p>THIS IS WHERE ALL THE USER ITEMS WILL APPEAR</p>
+
+  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@user.latitude}%2C#{@user.longitude}" %>
+
+  <div>
+    <% @user.items.each do |item| %>
+      <p>
+        <%= link_to(item.name, item_path(item)) %>
+      </p>
+      <p>
+        <%= item.description %>
+      </p>
+      <div>
+        <%= image_tag( item.image ) %>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Add a new item  -->
+  <% if @current_user %>
+    <button><a href="/items/new">Add new produce</a></button>
+  <% end %>
+>>>>>>> c6282268b0168677833af5d407b5c16ed830178b
 
 </div>

@@ -20,6 +20,15 @@
   </div>
 </div>
 
+<%= form_tag(items_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Produce" %>
+    <%= submit_tag "Search", :name => nil %>
+<% end %>
+
+<!-- <% if @items.blank? %>
+<h4>There are no items containing the term <%= params[:search] %>.</h4>
+<% end %> -->
+
 <div class="container">
   <h1 align="center">What's Available Around You?</h1>
 
@@ -43,14 +52,70 @@
             </div>
             <div class="card-action">
               <% if item.user %>
+        <!-- Geocoder details showing distance from current user to item location -->
+              <% @lat = item.user.latitude %>
+              <% @long = item.user.longitude %>
+              <% distance_between = Geocoder::Calculations.distance_between([item.user.latitude,item.user.longitude], [@current_user.latitude, @current_user.longitude]) %>
+
+              <% distance_between = distance_between * 1.6 %>
+
               <h4><i class="material-icons">person</i><%= link_to(item.user.name, "/users/#{item.user_id}") %></h4>
+                <p>Distance from you: <%= distance_between.round(2)%> kms</p>
+
               <% end %>
             </div>
           </div>
         </div>
       </div>
+          <%#= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&markers=color:red|label:I|#{item.user.latitude}%2C#{item.user.longitude}&markers=color:green|label:G|#{@current_user.latitude}%2C#{@current_user.longitude}" %>
       <% end %>
+
+
+      <% @markers = [] %>
+      <% @all_items.each do |i|%>
+      <% @markers.push([i.user.latitude, i.user.longitude]) %>
+      <% end %>
+      <%#= @markers.to_json %>
+
+  <!--  Google maps testing -->
+    <div id="map"></div>
+    <style>
+       #map {
+         width: 100%;
+         height: 400px;
+         background-color: grey;
+       }
+    </style>
+
+    <script>
+      function initMap() {
+        var userPos = {lat: <%= @current_user.latitude %>, lng: <%= @current_user.longitude %>};
+        var locs = [["-33.8559281","151.2036247"],["-33.8559281","151.2036247"],["-33.8559281","151.2036247"],["-33.79063","151.1831259"],["-33.8711734","151.2172787"],["-33.8711734","151.2172787"],["-33.8976831","151.1979387"],["-33.9046002","151.1784595"],["-33.9217711","151.2555824"],["-33.8559281","151.2036247"],["-33.7923071","151.2837038"],["-33.9217711","151.2555824"]];
+        // var locs = <%#= @markers %>
+
+        var map = new google.maps.Map(document.querySelector("#map"), {
+          zoom: 12,
+          center: userPos
+        });
+        var marker = new google.maps.Marker({
+          position: userPos,
+          map: map,
+          icon: "http://www.bwwebsites.co.uk/images/nav-icons/hm-icon.png"
+        });
+        for (i = 0; i <locs.length; i++){
+          marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locs[i][0], locs[i][1]),
+            map: map
+          })
+        }
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?&callback=initMap">
+    </script>
+
     </div>
 
 
+  <%#= @current_user.to_json %>
 </div>
