@@ -8,7 +8,12 @@ u1 = User.create({
   bio: "I love the vegetables",
   likes: "veggies",
   dislikes: "chicken",
-  allergies: "peanuts"
+  allergies: "peanuts",
+  building_number: "23",
+  street: "Hickson Rd",
+  city: "Sydney",
+  state: "NSW",
+  country: "Australia"
   })
 u2 = User.create({
   name: "Pine Apple",
@@ -19,7 +24,12 @@ u2 = User.create({
   bio: "I love the pineapples",
   likes: "pineapples",
   dislikes: "carrots",
-  allergies: "watermelon"
+  allergies: "watermelon",
+  building_number: "23",
+  street: "Hickson Rd",
+  city: "Sydney",
+  state: "NSW",
+  country: "Australia"
   })
 u3 = User.create({
   name: "Mr Carrot",
@@ -30,7 +40,12 @@ u3 = User.create({
   bio: "I love the carrots",
   likes: "carrots",
   dislikes: "pineapples",
-  allergies: "cheese"
+  allergies: "cheese",
+  building_number: "45",
+  street: "Kangaroo St",
+  city: "Manly",
+  state: "NSW",
+  country: "Australia"
   })
 u4 = User.create({
   name: "Dawton",
@@ -41,7 +56,12 @@ u4 = User.create({
   bio: "I love the vegetables",
   likes: "veggies",
   dislikes: "yogurt",
-  allergies: "dairy"
+  allergies: "dairy",
+  building_number: "1",
+  street: "Koala Lane",
+  city: "Chatswood",
+  state: "NSW",
+  country: "Australia"
   })
 u5 = User.create({
   name: "Studdard",
@@ -52,7 +72,12 @@ u5 = User.create({
   bio: "I love the pineapples",
   likes: "pineapples",
   dislikes: "mayonnaise",
-  allergies: "eggs"
+  allergies: "eggs",
+  building_number: "46",
+  street: "Holmwood St",
+  city: "Newtown",
+  state: "NSW",
+  country: "Australia"
   })
 u6 = User.create({
   name: "Soffe",
@@ -63,7 +88,12 @@ u6 = User.create({
   bio: "I love the carrots",
   likes: "carrots",
   dislikes: "tofu",
-  allergies: "soy"
+  allergies: "soy",
+  building_number: "74",
+  street: "Garden St",
+  city: "Alexandria",
+  state: "NSW",
+  country: "Australia"
   })
 u7 = User.create({
   name: "Haynes",
@@ -74,7 +104,12 @@ u7 = User.create({
   bio: "I love the vegetables",
   likes: "veggies",
   dislikes: "cereal",
-  allergies: "wheat"
+  allergies: "wheat",
+  building_number: "42",
+  street: "Oxford St",
+  city: "Darlinghurst",
+  state: "NSW",
+  country: "Australia"
   })
 u8 = User.create({
   name: "Lambshine",
@@ -85,7 +120,12 @@ u8 = User.create({
   bio: "I love the pineapples",
   likes: "pineapples",
   dislikes: "seafood",
-  allergies: "shellfish"
+  allergies: "shellfish",
+  building_number: "2",
+  street: "Crown St",
+  city: "Woolloomooloo",
+  state: "NSW",
+  country: "Australia"
   })
 u9 = User.create({
   name: "Cornelissen",
@@ -96,7 +136,12 @@ u9 = User.create({
   bio: "I love the carrots",
   likes: "carrots",
   dislikes: "Marzipan",
-  allergies: "cheese"
+  allergies: "cheese",
+  building_number: "21",
+  street: "Vicar St",
+  city: "Coogee",
+  state: "NSW",
+  country: "Australia"
   })
 u10 = User.create({
   name: "Lippingwell",
@@ -107,117 +152,12 @@ u10 = User.create({
   bio: "I love the vegetables",
   likes: "veggies",
   dislikes: "liquorice",
-  allergies: "peanuts"
-  })
-u11 = User.create({
-  name: "Smead",
-  email: "msmead8@email.com",
-  password: "chicken",
-  password_confirmation: "chicken",
-  image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
-  bio: "I love the vegetables",
-  likes: "veggies",
-  dislikes: "olives",
-  allergies: "corn"
-  })
-u12 = User.create({
-  name: "Charo",
-  email: "charo9@email.com",
-  password: "chicken",
-  password_confirmation: "chicken",
-  image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
-  bio: "I love the pineapples",
-  likes: "pineapples",
-  dislikes: "Brussels Sprouts",
-  allergies: "wheat"
-  })
-u13 = User.create({
-  name: "Hatje",
-  email: "ghatjea@email.com",
-  password: "chicken",
-  password_confirmation: "chicken",
-  image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
-  bio: "I love the carrots",
-  likes: "carrots",
-  dislikes: "Sour Cream",
-  allergies: "dairy"
-  })
-u14 = User.create({
-  name: "Scibsey",
-  email: "rscibseyb@email.com",
-  password: "chicken",
-  password_confirmation: "chicken",
-  image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
-  bio: "I love the vegetables",
-  likes: "veggies",
-  dislikes: "Oysters",
-  allergies: "tree nuts"
-  })
-u15 = User.create({
-  name: "Haywood",
-  email: "jhaywoodc@email.com",
-  password: "chicken",
-  password_confirmation: "chicken",
-  image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
-  bio: "I love the pineapples",
-  likes: "pineapples",
-  dislikes: "Anchovies",
-  allergies: "soy"
-  })
-u16 = User.create({
-  name: "Harbertson",
-  email: "harbertsond@email.com",
-  password: "chicken",
-  password_confirmation: "chicken",
-  image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
-  bio: "I love the carrots",
-  likes: "carrots",
-  dislikes: "Sardines",
-  allergies: "fish"
-  })
-u17 = User.create({
-  name: "Denes",
-  email: "sdenese@email.com",
-  password: "chicken",
-  password_confirmation: "chicken",
-  image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
-  bio: "I love the vegetables",
-  likes: "veggies",
-  dislikes: "raisens",
-  allergies: "peanuts"
-  })
-u18 = User.create({
-  name: "Bugbird",
-  email: "sbugbirdg@email.com",
-  password: "chicken",
-  password_confirmation: "chicken",
-  image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
-  bio: "I love the pineapples",
-  likes: "pineapples",
-  dislikes: "carrots",
-  allergies: "milk"
-  })
-u19 = User.create({
-  name: "Flecknoe",
-  email: "flecknoem@email.com",
-  password: "chicken",
-  password_confirmation: "chicken",
-  image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
-  bio: "I love the carrots",
-  likes: "carrots",
-  dislikes: "pineapples",
-  allergies: "eggs"
-  })
-u20 = User.create({
-  name: "Lerwill",
-  email: "slerwilln@email.com",
-  password: "chicken",
-  password_confirmation: "chicken",
-  image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
-  bio: "I love the vegetables",
-  likes: "veggies",
-  dislikes: "chicken",
-  allergies: "soy"
+  allergies: "peanuts",
+  building_number: "23",
+  street: "Lombard St",
+  city: "Glebe",
+  state: "NSW",
+  country: "Australia"
   })
   puts "User Count: #{User.all.count }"
   Item.destroy_all
