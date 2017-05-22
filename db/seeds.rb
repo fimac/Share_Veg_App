@@ -5,6 +5,7 @@ u1 = User.create({
   password: "chicken",
   password_confirmation: "chicken",
   image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+  mobile: "0494384534",
   bio: "I love the vegetables",
   likes: "veggies",
   dislikes: "chicken",
@@ -21,6 +22,7 @@ u2 = User.create({
   password: "chicken",
   password_confirmation: "chicken",
   image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+  mobile: "0494384534",
   bio: "I love the pineapples",
   likes: "pineapples",
   dislikes: "carrots",
@@ -37,6 +39,7 @@ u3 = User.create({
   password: "chicken",
   password_confirmation: "chicken",
   image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+  mobile: "0494384534",
   bio: "I love the carrots",
   likes: "carrots",
   dislikes: "pineapples",
@@ -53,6 +56,7 @@ u4 = User.create({
   password: "chicken",
   password_confirmation: "chicken",
   image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+  mobile: "0494384534",
   bio: "I love the vegetables",
   likes: "veggies",
   dislikes: "yogurt",
@@ -69,6 +73,7 @@ u5 = User.create({
   password: "chicken",
   password_confirmation: "chicken",
   image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+  mobile: "0494384534",
   bio: "I love the pineapples",
   likes: "pineapples",
   dislikes: "mayonnaise",
@@ -85,6 +90,7 @@ u6 = User.create({
   password: "chicken",
   password_confirmation: "chicken",
   image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+  mobile: "0494384534",
   bio: "I love the carrots",
   likes: "carrots",
   dislikes: "tofu",
@@ -101,6 +107,7 @@ u7 = User.create({
   password: "chicken",
   password_confirmation: "chicken",
   image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+  mobile: "0494384534",
   bio: "I love the vegetables",
   likes: "veggies",
   dislikes: "cereal",
@@ -117,6 +124,7 @@ u8 = User.create({
   password: "chicken",
   password_confirmation: "chicken",
   image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+  mobile: "0494384534",
   bio: "I love the pineapples",
   likes: "pineapples",
   dislikes: "seafood",
@@ -133,6 +141,7 @@ u9 = User.create({
   password: "chicken",
   password_confirmation: "chicken",
   image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+  mobile: "0494384534",
   bio: "I love the carrots",
   likes: "carrots",
   dislikes: "Marzipan",
@@ -149,6 +158,7 @@ u10 = User.create({
   password: "chicken",
   password_confirmation: "chicken",
   image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+  mobile: "0494384534",
   bio: "I love the vegetables",
   likes: "veggies",
   dislikes: "liquorice",
@@ -160,6 +170,7 @@ u10 = User.create({
   country: "Australia"
   })
   puts "User Count: #{User.all.count }"
+
   Item.destroy_all
   i1 = Item.create({
     name: "Pineapple",
@@ -201,37 +212,37 @@ u10 = User.create({
     name: "Organic Cheese",
     description: "Cheese samples from a gift basket",
     image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
-    user_id: u11.id
+    user_id: u6.id
     })
   i8 = Item.create({
     name: "Carrot",
     description: "I'm in poor condition and not very tasty",
     image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
-    user_id: u12.id
+    user_id: u5.id
     })
   i9 = Item.create({
     name: "Potatoes",
     description: "Leftover uncooked potatoes from a 1kg bag",
     image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
-    user_id: u20.id
+    user_id: u9.id
     })
   i10 = Item.create({
     name: "Bread Rolls",
     description: "Overstocked for a party and heaps of unused bread rolls",
     image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
-    user_id: u20.id
+    user_id: u2.id
     })
   i11 = Item.create({
     name: "Butter",
     description: "Massive tub of butter",
     image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
-    user_id: u17.id
+    user_id: u3.id
     })
   i12 = Item.create({
     name: "Spinach",
     description: "Bag of fresh spinach ideal for green juicing or salads",
     image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
-    user_id: u15.id
+    user_id: u9.id
     })
 puts "Item Count: #{Item.all.count }"
 Comment.destroy_all
@@ -246,3 +257,87 @@ c2 = Comment.create ({
       item_id: i2.id
     })
 puts "Comment Count: #{Comment.all.count }"
+  Item.destroy_all
+  i1 = Item.create({
+    name: "Pineapple",
+    description: "I'm tasty and in good condition",
+    image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+    user_id: u2.id
+    })
+  i2 = Item.create({
+    name: "Carrot",
+    description: "I'm in poor condition and not very tasty",
+    image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+    user_id: u2.id
+    })
+  i3 = Item.create({
+    name: "Apple",
+    description: "I'm juicy and crunchy, yummmmmmy come and get me",
+    image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+    user_id: u2.id
+    })
+  i4 = Item.create({
+    name: "Brussel Sprouts",
+    description: "Whole bag of fresh Brussel Sprouts",
+    image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+    user_id: u4.id
+    })
+  i5 = Item.create({
+    name: "Olives",
+    description: "Home grown and made pickled olives",
+    image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+    user_id: u8.id
+    })
+  i6 = Item.create({
+    name: "Mushrooms",
+    description: "Straight out of my garden, heaps to share",
+    image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+    user_id: u8.id
+    })
+  i7 = Item.create({
+    name: "Organic Cheese",
+    description: "Cheese samples from a gift basket",
+    image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+    user_id: u9.id
+    })
+  i8 = Item.create({
+    name: "Carrot",
+    description: "I'm in poor condition and not very tasty",
+    image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+    user_id: u7.id
+    })
+  i9 = Item.create({
+    name: "Potatoes",
+    description: "Leftover uncooked potatoes from a 1kg bag",
+    image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+    user_id: u2.id
+    })
+  i10 = Item.create({
+    name: "Bread Rolls",
+    description: "Overstocked for a party and heaps of unused bread rolls",
+    image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+    user_id: u4.id
+    })
+  i11 = Item.create({
+    name: "Butter",
+    description: "Massive tub of butter",
+    image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+    user_id: u8.id
+    })
+  i12 = Item.create({
+    name: "Spinach",
+    description: "Bag of fresh spinach ideal for green juicing or salads",
+    image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+    user_id: u3.id
+    })
+puts "Item Count: #{Item.all.count }"
+Comment.destroy_all
+c1 = Comment.create ({
+      post: "Your pineapple changed my life",
+      user_id: u1.id,
+      item_id: i1.id
+    })
+c2 = Comment.create ({
+      post: "Your carrots changed my life",
+      user_id: u3.id,
+      item_id: i2
