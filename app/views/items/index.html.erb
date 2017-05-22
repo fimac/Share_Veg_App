@@ -39,7 +39,7 @@
               <p><%= link_to(item.description, "/items/#{item.id}") %></p>
             </div>
             <div class="card-action">
-              <h4><i class="material-icons">person</i><%= link_to(item.user.name, "/items/#{item.id}") %></h4>
+              <h4><i class="material-icons">person</i><%= link_to(item.user.name, "/users/#{item.user_id}") %></h4>
 
             </div>
           </div>
