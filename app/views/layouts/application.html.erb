@@ -24,7 +24,7 @@
             <li><a href="#">Javascript</a></li>
             <li><a href="#">Login</a></li>
               <li><%= link_to "Log Out", "/logout", method: :delete %></li>
-              <li><a href= "user_path(@current_user)">Hi <%= @current_user.name %></a></li>
+              <li><a href= "<%= user_path(@current_user) %>">Hi <%= @current_user.name %></a></li>
 
             <% else %>
               <li><a href="/login">Sign In</a></li>
