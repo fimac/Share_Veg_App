@@ -2,7 +2,7 @@
   <div class="center row">
       <div class="col s12 m4"></div>
       <div class="box-white col s12 m4">
-        <h1>Log In</h1>
+        <h1>Welcome</h1>
         <div class="col s12 m4 l0"></div>
         <div class="col s12 m4 l12">
           <% if flash[:login_error] %>
@@ -11,19 +11,13 @@
             </p>
           <% end %>
 
-          <%= form_tag "/login" do %>
-            <p>
-              <%= label_tag :email %>
-              <%= email_field_tag :email %>
-            </p>
-            <p>
-              <%= label_tag :password %>
-              <%= password_field_tag :password %>
-            </p>
+          <%= form_for '/login' do %>
+            <%= email_field :email, nil, placeholder: 'Email' %>
 
-            <button>Submit</button>
+            <%= password_field :password, nil, placeholder: 'Password' %>
+
+            <%= button_tag "Log In", :class => "btn waves-effect waves-light z-depth-0" %>
           <% end %>
-
         </div>
         <div class="col s12 m4 l0"></div>
       </div>
