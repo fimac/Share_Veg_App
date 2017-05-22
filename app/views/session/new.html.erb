@@ -11,7 +11,7 @@
             </p>
           <% end %>
 
-          <%= form_for '/login' do %>
+          <%= form_tag '/login' do %>
             <%= email_field :email, nil, placeholder: 'Email' %>
 
             <%= password_field :password, nil, placeholder: 'Password' %>
