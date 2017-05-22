@@ -25,6 +25,7 @@ class UsersController < ApplicationController
     else
       render :new # Show them the Sign Up form again
     end
+
     cloudinary = Cloudinary::Uploader.upload( params[ "user" ][ "link" ] )
     @user.image = cloudinary["url"]
     @user = @current_user
@@ -51,7 +52,7 @@ class UsersController < ApplicationController
 
    private
       def user_params
-        params.require(:user).permit(:name, :email, :password, :password_confirmation, :bio)
+        params.require(:user).permit(:name, :email, :password, :password_confirmation, :bio, :allergies, :likes, :dislikes, :image)
       end
 
       def check_if_logged_out
