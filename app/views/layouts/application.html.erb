@@ -26,7 +26,7 @@
               <li><a href= "<%= user_path(@current_user) %>">Hi <%= @current_user.name %></a></li>
 
             <% else %>
-              <li><a href="/login">Sign In</a></li>
+              <li><a href="/login">Log In</a></li>
               <li><a href="/users/new">Sign Up</a></li>
             <% end %>
           </ul>
@@ -49,6 +49,12 @@
 
   <main> <!-- check main css -->
     <%= yield %>
+
+    <div class="container">
+      <button onclick="topFunction()" id="myBtn" title="Go to top" class="btn waves-effect waves-light z-depth-0"><i class="material-icons">arrow_upward</i></button>
+    </div>
+
+
   </main>
 
   <footer class="page-footer grey lighten-3">
