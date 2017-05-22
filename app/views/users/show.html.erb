@@ -1,37 +1,39 @@
 <div class="flex-height">
-  <div class="container row box-white">
-    <div class="col s12 m1"></div>
-    <div class="col s12 m10">
+  <div class="profile box-white-darken">
+    <div class="container row">
+
       <h1><%= @user.name %></h1>
-      <%= @user.to_json %>
 
-          <div class="col s12 m4">
-            <%if @user.image %>
-              <div>
-                <%= image_tag( @user.image ) %>
-              </div>
-            <%end %>
+      <div class="col s12 m6">
+        <ul class="collection">
+          <li></li>
+          <li class="collection-item"><strong>Mobile: </strong><%= @user.mobile %></li>
+          <li class="collection-item"><strong>Email: </strong><%= @user.email %></li>
 
+          <% if @user.building_number && @user.street && @user.city && @user.state && @user.country %>
+          <li class="collection-item"><strong>Address: </strong><%= @user.building_number + " " + @user.street + ", " + @user.city + ", " + @user.state + ", " + @user.country %></li>
+                <% end %>
 
+          <li class="collection-item"><strong>About me: </strong><%= @user.bio %></li>
+          <li class="collection-item"><strong>Likes: </strong><%= @user.likes %></li>
+          <li class="collection-item"><strong>Dislikes: </strong><%= @user.dislikes %></li>
+          <li class="collection-item"><strong>Allegies: </strong><%= @user.allergies %></li>
+        </ul>
+      </div>
 
+      <div class="col s12 m3 collection">
+        <%if @user.image %>
+          <div>
+            <%= image_tag( @user.image ) %>
           </div>
+        <%end %>
+      </div>
 
-          <div class="col s12 m8">
-            <ul class="collection">
-              <li class="collection-item"><strong>Name: </strong><%= @user.name %></li>
-              <li class="collection-item"><strong>Email: </strong><%= @user.email %></li>
-              <li class="collection-item"><strong>Mobile: </strong><%= @user.mobile %></li>
-              <% if @user.building_number && @user.street && @user.city && @user.state && @user.country %>
-              <li class="collection-item"><strong>Address: </strong><%= @user.building_number + " " + @user.street + ", " + @user.city + ", " + @user.state + ", " + @user.country %></li>
-              <% end %>
-
-              <li class="collection-item"><strong>About me: </strong><%= @user.bio %></li>
-              <li class="collection-item"><strong>Likes: </strong><%= @user.likes %></li>
-              <li class="collection-item"><strong>Dislikes: </strong><%= @user.dislikes %></li>
-              <li class="collection-item"><strong>Allegies: </strong><%= @user.allergies %></li>
-            </ul>
-          </div>
-
+      <div class="col s12 m3 collection">
+        <%if @user.image %>
+            <%= image_tag "http://maps.google.com/maps/api/staticmap?size=405x300&sensor=false&zoom=16&markers=#{@user.latitude}%2C#{@user.longitude}" %>
+        <%end %>
+      </div>
 
       <div class="controls">
         <% if @current_user && @current_user.id == @user.id  %>
@@ -42,11 +44,10 @@
       </div>
 
     </div>
-    <div class="col s12 m1"></div>
   </div>
 </div>
 
 <div class="container">
   <p>THIS IS WHERE ALL THE USER ITEMS WILL APPEAR</p>
-  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@user.latitude}%2C#{@user.longitude}" %>
+
 </div>
