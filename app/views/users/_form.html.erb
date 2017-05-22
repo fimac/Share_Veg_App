@@ -7,7 +7,7 @@
         <% end %>
       <% end %>
 
-      <%= form_for(@user, :html => { :multipart => true }) do |f| %>
+      <%= form_for @user do |f| %>
         <p>
           <%= f.label :name %>
           <%= f.text_field :name, required: true %>
@@ -17,11 +17,6 @@
           <%= f.label :email %>
           <%= f.email_field :email, required: true %>
         </p>
-
-        <p>
-         <%= f.label :link %>
-         <%= f.file_field :link%>
-       </p>
 
         <p>
           <%= f.label :password %>
