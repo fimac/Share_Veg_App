@@ -22,7 +22,6 @@
             <li><a href="/items">Search</a></li>
             <li><a href="#">Components</a></li>
             <li><a href="#">Javascript</a></li>
-            <li><a href="#">Login</a></li>
               <li><%= link_to "Log Out", "/logout", method: :delete %></li>
               <li><a href= "<%= user_path(@current_user) %>">Hi <%= @current_user.name %></a></li>
 
@@ -32,10 +31,17 @@
             <% end %>
           </ul>
           <ul class="side-nav" id="mobile-demo">
+            <% if @current_user %>
             <li><a href="/items">Search</a></li>
             <li><a href="#">Components</a></li>
             <li><a href="#">Javascript</a></li>
-            <li><a href="#">Login</a></li>
+              <li><%= link_to "Log Out", "/logout", method: :delete %></li>
+              <li><a href= "<%= user_path(@current_user) %>">Hi <%= @current_user.name %></a></li>
+
+            <% else %>
+              <li><a href="/login">Log In</a></li>
+              <li><a href="/users/new">Sign Up</a></li>
+            <% end %>
           </ul>
         </div>
       </div>
