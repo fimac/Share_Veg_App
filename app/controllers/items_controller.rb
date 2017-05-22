@@ -12,10 +12,15 @@ class ItemsController < ApplicationController
   end
 
   def create
-    item = Item.create ( item_params )
+    item = Item.create( item_params )
+    cloudinary = Cloudinary::Uploader.upload( params[ "item" ][ "link" ] )
+    item.image = cloudinary["url"]
     item.user = @current_user
     item.save
-    redirect_to "items/#{item.id}"
+
+    redirect_to "/items/#{item.id}"
+
+
   end
 
   def edit
@@ -25,6 +30,13 @@ class ItemsController < ApplicationController
   def update
     item = Item.find_by( id: params['id'] )
     item.update( item_params )
+
+    if params[:item][:link]
+      cloudinary = Cloudinary::Uploader.upload( params[ "item" ][ "link" ] )
+      item.image = cloudinary["url"]
+    end
+    item.save
+
     redirect_to "/items/#{item.id}"
   end
 
@@ -39,15 +51,3 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:user_id, :name, :description, :image)
   end
 end
-
-# Search code
-
-# def index
-#   # if params["occassion"] is defined
-#   if params[:occasion].present?
-#   # @products should be all products where the name field matches params["name"]
-#     @products = Product.where(:occasion => params[:occasion])
-#     # Product.where(occasion_field, "<%#{params[:occasion]}%>")
-#   else
-#     @products = Product.search(params[:search])
-#   end
