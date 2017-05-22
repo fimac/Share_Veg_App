@@ -1,9 +1,11 @@
 <div class="container">
   <h1><%= @user.name %></h1>
 
+<%if @user.image %>
   <div>
     <%= image_tag( @user.image ) %>
   </div>
+<%end %>
 
   <ul>
     <li>Name: <%= @user.name %></li>
