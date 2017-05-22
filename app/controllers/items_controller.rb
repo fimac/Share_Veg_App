@@ -1,6 +1,13 @@
 class ItemsController < ApplicationController
+
   def index
     @all_items = Item.all
+
+    if params[:search]
+      @all_items = Item.search(params[:search]).order("created_at DESC")
+    else
+      @all_items = Item.all.order("created_at DESC")
+    end
   end
 
   def show

@@ -12,8 +12,6 @@
               </div>
             <%end %>
 
-
-
           </div>
 
           <div class="col s12 m8">
@@ -49,4 +47,24 @@
 <div class="container">
   <p>THIS IS WHERE ALL THE USER ITEMS WILL APPEAR</p>
   <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@user.latitude}%2C#{@user.longitude}" %>
+
+  <div>
+    <% @user.items.each do |item| %>
+      <p>
+        <%= link_to(item.name, item_path(item)) %>
+      </p>
+      <p>
+        <%= item.description %>
+      </p>
+      <div>
+        <%= image_tag( item.image ) %>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Add a new item  -->
+  <% if @current_user %>
+    <button><a href="/items/new">Add new produce</a></button>
+  <% end %>
+
 </div>
