@@ -1,5 +1,5 @@
 <div class="flex-height">
-<<<<<<< HEAD
+
   <div class="profile box-white-darken">
     <div class="container row">
 
@@ -13,7 +13,7 @@
 
           <% if @user.building_number && @user.street && @user.city && @user.state && @user.country %>
           <li class="collection-item"><strong>Address: </strong><%= @user.building_number + " " + @user.street + ", " + @user.city + ", " + @user.state + ", " + @user.country %></li>
-                <% end %>
+              <% end %>
 
           <li class="collection-item"><strong>About me: </strong><%= @user.bio %></li>
           <li class="collection-item"><strong>Likes: </strong><%= @user.likes %></li>
@@ -39,27 +39,33 @@
           <button class="btn waves-effect waves-light z-depth-0" type="button" name="action"><%= link_to("Delete", "/users/#{@user.id}", method: :delete, data: { confirm: "Are you sure?" }) %></button>
         <% end %>
       </div>
+        <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@user.latitude}%2C#{@user.longitude}" %>
 
     </div>
   </div>
 </div>
 
 <div class="container">
-  <p>THIS IS WHERE ALL THE USER ITEMS WILL APPEAR</p>
+  <h2>Food items currently available</h2>
 
-  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@user.latitude}%2C#{@user.longitude}" %>
+
 
   <div>
     <% @user.items.each do |item| %>
+      <% if item.collected == "Item available now" %>
       <p>
         <%= link_to(item.name, item_path(item)) %>
       </p>
       <p>
         <%= item.description %>
       </p>
+      <p>
+        <%= item.collected %>
+      </p>
       <div>
         <%= image_tag( item.image ) %>
       </div>
+      <% end %>
     <% end %>
   </div>
 
@@ -67,6 +73,24 @@
   <% if @current_user %>
     <button><a href="/items/new">Add new produce</a></button>
   <% end %>
->>>>>>> c6282268b0168677833af5d407b5c16ed830178b
+</div>
 
+<div class="container">
+  <h2>Past food items you have shared</h2>
+  <% @user.items.each do |item| %>
+    <% if item.collected == "Collected" %>
+    <p>
+      <%= link_to(item.name, item_path(item)) %>
+    </p>
+    <p>
+      <%= item.description %>
+    </p>
+    <p>
+      <%= item.collected %>
+    </p>
+    <div>
+      <%= image_tag( item.image ) %>
+    </div>
+    <% end %>
+  <% end %>
 </div>

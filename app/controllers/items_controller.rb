@@ -70,7 +70,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:user_id, :name, :description, :image)
+    params.require(:item).permit(:user_id, :name, :description, :collected, :image)
   end
 
   def check_distance(items, distance = 5)
