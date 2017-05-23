@@ -1,5 +1,9 @@
 class ItemsController < ApplicationController
 
+  def map
+
+  end
+
   def index
     @all_items = Item.all
 

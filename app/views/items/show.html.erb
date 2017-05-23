@@ -1,63 +1,72 @@
 <div class="hero">
-  <div class="container">
+    <div class="container">
 
-<!--Item name, image and description -->
+        <!--Item name, image and description -->
 
-    <div class="row">
-      <div class="col s12 m4">
-        <div class="card horizontal z-depth-0">
-          <div class="card-image">
-            <%= image_tag(@item.image) %>
-            <!-- <a class="btn-floating waves-effect waves-light z-depth-0"><i class="material-icons">add</i></a> -->
-          </div>
-          <div class="card-stacked">
-            <div class="card-content">
-              <h4><%= @item.name %></h4>
-              <p><%= @item.description %></p>
+        <div class="row">
+            <div class="col s12 m4">
+                <div class="card horizontal z-depth-0">
+                    <div class="card-image">
+                        <%= image_tag(@item.image) %>
+                        <!-- <a class="btn-floating waves-effect waves-light z-depth-0"><i class="material-icons">add</i></a> -->
+                    </div>
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <h4><%= @item.name %></h4>
+                            <p><%= @item.description %></p>
+                        </div>
+                        <div class="card-action">
+                            <% distance_between = Geocoder::Calculations.distance_between([@item.user.latitude,@item.user.longitude], [@current_user.latitude, @current_user.longitude]) %>
+
+                            <% distance_between = distance_between * 1.6 %>
+                            <h4>
+                                <i class="material-icons">person</i><%= link_to(@item.user.name, "/users/#{@item.user_id}") %></h4>
+                            <p>Distance from you: <%= distance_between.round(2)%> kms</p>
+                        </div>
+                    </div>
+                    <div class="col s12 m1">
+                        <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&markers=color:red|label:I|#{@item.user.latitude}%2C#{@item.user.longitude}&markers=color:green|label:G|#{@current_user.latitude}%2C#{@current_user.longitude}" %>
+                    </div>
+
+                </div>
+
             </div>
-            <div class="card-action">
-              <h4><i class="material-icons">person</i><%= link_to(@item.user.name, "/users/#{@item.user_id}") %></h4>
-            </div>
-          </div>
         </div>
-      </div>
+
+        <div class="controls">
+            <button class="btn waves-effect waves-light z-depth-0" type="button" name="action"><%= link_to("Edit", edit_item_path(@item)) %></button>
+            <button class="btn waves-effect waves-light z-depth-0" type="button" name="action"><%= link_to("Delete", item_path(@item), method: :delete, data: {confirm: "Are you sure?"}) %></button>
+        </div>
+
     </div>
+
+    <div>
+        <p>
+            Item available from:
+            <%= @item.created_at.strftime("%B %d, %Y  %I:%M %P") %>
+        </p>
+
+    </div>
+    <!-- End of item -->
+
+    <!-- Comments field  -->
+    <div>
+        <h2>Comments</h2>
+
+        <%= render @item.comments %>
+
+        <hr>
+
+        <h2>Add a comment:</h2>
+
+        <%= render 'comments/form' %>
+
+    </div>
+    <!-- End of comments field -->
+
+    <!-- Edit and delete button for whole listing  -->
 
     <div class="controls">
-      <button class="btn waves-effect waves-light z-depth-0" type="button" name="action"><%= link_to("Edit", edit_item_path(@item)) %></button>
-      <button class="btn waves-effect waves-light z-depth-0" type="button" name="action"><%= link_to("Delete", item_path(@item), method: :delete, data: {confirm: "Are you sure?"}) %></button>
+        <%= link_to("Edit this listing", edit_item_path(@item)) %>
+        <%= link_to("Deleting this listing", item_path(@item), method: :delete, data: {confirm: "Are you sure?"}) %>
     </div>
-
-  </div>
-
-
-
-<div>
-  <p>
-    Item available from: <%= @item.created_at.strftime("%B %d, %Y  %I:%M %P") %>
-  </p>
-
-</div>
-<!-- End of item -->
-
-<!-- Comments field  -->
-<div>
-  <h2>Comments</h2>
-
-  <%= render @item.comments %>
-
-  <hr>
-
-  <h2>Add a comment:</h2>
-
-  <%= render 'comments/form' %>
-
-</div>
-<!-- End of comments field -->
-
-<!-- Edit and delete button for whole listing  -->
-
-<div class="controls">
-  <%= link_to("Edit this listing", edit_item_path(@item)) %>
-  <%= link_to("Deleting this listing", item_path(@item), method: :delete, data: {confirm: "Are you sure?"}) %>
-</div>
