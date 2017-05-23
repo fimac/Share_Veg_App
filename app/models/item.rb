@@ -6,7 +6,7 @@ class Item < ApplicationRecord
     # self.user.latitude
     # self.user.longitude
 
-    where("name ILIKE ?", "%#{search}%")
+    self.where("name ILIKE ?", "%#{search}%")
 
   end
 

@@ -11,6 +11,7 @@
                     <div class="input-field">
                         <%= form_tag(items_path, :method => "get", id: "search-form") do %>
                         <%= text_field_tag :search, params[:search], placeholder: "Search Produce" %>
+                        <%= text_field_tag :distance, params[:distance], placeholder: "Search Produce" %>
                         <%= button_tag "Search", :name => nil, :class => "btn waves-effect waves-light z-depth-0"  %>
                         <% end %>
                     </div>
