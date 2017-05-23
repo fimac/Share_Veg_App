@@ -70,10 +70,12 @@
   </div>
 
   <!-- Add a new item  -->
-  <% if @current_user %>
+  <% if @current_user && @current_user.id == @user.id  %>
     <button><a href="/items/new">Add new produce</a></button>
   <% end %>
+
 </div>
+
 
 <div class="container">
   <h2>Past food items you have shared</h2>

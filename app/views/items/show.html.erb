@@ -68,6 +68,9 @@
     <!-- Edit and delete button for whole listing  -->
 
     <div class="controls">
-        <%= link_to("Edit this listing", edit_item_path(@item)) %>
-        <%= link_to("Deleting this listing", item_path(@item), method: :delete, data: {confirm: "Are you sure?"}) %>
+
+        <% if @current_user.id == @item.user.id  %>
+          <%= link_to("Edit this listing", edit_item_path(@item)) %>
+          <%= link_to("Deleting this listing", item_path(@item), method: :delete, data: {confirm: "Are you sure?"}) %>
+         <% end %>
     </div>
