@@ -8,7 +8,14 @@ class ItemsController < ApplicationController
     @all_items = Item.all
 
     if params[:search]
-      @all_items = Item.search(params[:search]).order("created_at DESC")
+
+      if params[:distance]
+        unfiltered_items = Item.where( name: params[:search] )
+        @all_items = check_distance( unfiltered_items )
+      else
+      @all_items =  Item.where( name: params[:search] )
+      end
+
     else
       @all_items = Item.all.order("created_at DESC")
     end
@@ -61,4 +68,20 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:user_id, :name, :description, :image)
   end
+
+  def check_distance(items)
+    output = []
+    user_distance = 4
+
+    items.each do |item|
+    item_distance = Geocoder::Calculations.distance_between( "#{ @current_user.latitude }, #{ @current_user.longitude }", "#{ item.user.latitude }, #{ item.user.longitude }" )
+      if item_distance <= user_distance
+        output << item
+      end
+    end
+    return output
+  end
 end
+
+# extend form to inlc for distance.
+# add an if for params of distance like the search.

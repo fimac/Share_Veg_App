@@ -1,115 +1,112 @@
 <div class="hero">
-  <div class="center row">
-      <div class="col s12 m4"></div>
-      <div class="box-white col s12 m4">
-        <h1>Want something <br> in particular?</h1>
-        <div class="col s12 m4 l1"></div>
-        <div class="col s12 m4 l10">
-          <form>
-            <div class="input-field">
-                <%= form_tag(items_path, :method => "get", id: "search-form") do %>
-                  <%= text_field_tag :search, params[:search], placeholder: "Search Produce" %>
-                  <%= button_tag "Search", :name => nil, :class => "btn waves-effect waves-light z-depth-0"  %>
-                <% end %>
+    <div class="center row">
+        <div class="col s12 m4"></div>
+        <div class="box-white col s12 m4">
+            <h1>Want something
+                <br>
+                in particular?</h1>
+            <div class="col s12 m4 l1"></div>
+            <div class="col s12 m4 l10">
+                <form>
+                    <div class="input-field">
+                        <%= form_tag(items_path, :method => "get", id: "search-form") do %>
+                        <%= text_field_tag :search, params[:search], placeholder: "Search Produce" %>
+                        <%= button_tag "Search", :name => nil, :class => "btn waves-effect waves-light z-depth-0"  %>
+                        <% end %>
+                    </div>
+                </form>
             </div>
-          </form>
+            <div class="col s12 m4 l1"></div>
         </div>
-        <div class="col s12 m4 l1">
-
-
-        </div>
-      </div>
-      <div class="col s12 m4"></div>
-  </div>
+        <div class="col s12 m4"></div>
+    </div>
 </div>
 
-
 <div class="container">
-  <h1 align="center">What's Available Around You?</h1>
+    <h1 align="center">What's Available Around You?</h1>
 
-  <!-- This is the list of food items  -->
+    <!-- This is the list of food items  -->
 
     <div class="row">
-      <% @all_items.each do |item| %>
-      <div class="col s12 m4">
-        <div class="card horizontal z-depth-0">
-          <div class="card-image">
-            <% if item.image %>
-            <%= link_to(image_tag(item.image), "/items/#{item.id}") %>
-            <% end %>
-            <!-- <a class="btn-floating waves-effect waves-light z-depth-0"><i class="material-icons">add</i></a> -->
-          </div>
-          <div class="card-stacked">
-            <div class="card-content">
-              <h4><%= link_to(item.name, "/items/#{item.id}") %></h4>
-              <p><%= link_to(item.description, "/items/#{item.id}") %></p>
+        <% @all_items.each do |item| %>
+        <div class="col s12 m4">
+            <div class="card horizontal z-depth-0">
+                <div class="card-image">
+                    <% if item.image %>
+                    <%= link_to(image_tag(item.image), "/items/#{item.id}") %>
+                    <% end %>
+                    <!-- <a class="btn-floating waves-effect waves-light z-depth-0"><i class="material-icons">add</i></a> -->
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h4><%= link_to(item.name, "/items/#{item.id}") %></h4>
+                        <p><%= link_to(item.description, "/items/#{item.id}") %></p>
 
+                    </div>
+                    <div class="card-action">
+                        <% if item.user %>
+                        <!-- Geocoder details showing distance from current user to item location -->
+                        <% @lat = item.user.latitude %>
+                        <% @long = item.user.longitude %>
+                        <% distance_between = Geocoder::Calculations.distance_between([item.user.latitude,item.user.longitude], [@current_user.latitude, @current_user.longitude]) %>
+
+                        <% distance_between = distance_between * 1.6 %>
+
+                        <h4>
+                            <i class="material-icons">person</i><%= link_to(item.user.name, "/users/#{item.user_id}") %></h4>
+                        <p>Distance from you:
+                            <%= distance_between.round(2)%>
+                            kms</p>
+
+                        <% end %>
+                    </div>
+                </div>
             </div>
-            <div class="card-action">
-              <% if item.user %>
-        <!-- Geocoder details showing distance from current user to item location -->
-              <% @lat = item.user.latitude %>
-              <% @long = item.user.longitude %>
-              <% distance_between = Geocoder::Calculations.distance_between([item.user.latitude,item.user.longitude], [@current_user.latitude, @current_user.longitude]) %>
-
-              <% distance_between = distance_between * 1.6 %>
-
-              <h4><i class="material-icons">person</i><%= link_to(item.user.name, "/users/#{item.user_id}") %></h4>
-                <p>Distance from you: <%= distance_between.round(2)%> kms</p>
-
-              <% end %>
-            </div>
-          </div>
         </div>
-      </div>
-      <% end %>
+        <% end %>
 
+        <% @markers = [] %>
+        <% @all_items.each do |i|%>
+        <% @markers.push([i.user.latitude, i.user.longitude]) %>
+        <% end %>
+        <%#= @markers.to_json %>
 
-      <% @markers = [] %>
-      <% @all_items.each do |i|%>
-      <% @markers.push([i.user.latitude, i.user.longitude]) %>
-      <% end %>
-      <%#= @markers.to_json %>
+        <!--  Google maps testing -->
+        <div id="map"></div>
+        <style>
+            #map {
+                width: 100%;
+                height: 400px;
+                background-color: grey;
+            }
 
-  <!--  Google maps testing -->
-    <div id="map"></div>
-    <style>
-       #map {
-         width: 100%;
-         height: 400px;
-         background-color: grey;
-       }
-    </style>
+        </style>
 
-    <script>
-      function initMap() {
-        var userPos = {lat: <%= @current_user.latitude %>, lng: <%= @current_user.longitude %>};
-        var locs = [["-33.8559281","151.2036247"],["-33.8559281","151.2036247"],["-33.8559281","151.2036247"],["-33.79063","151.1831259"],["-33.8711734","151.2172787"],["-33.8711734","151.2172787"],["-33.8976831","151.1979387"],["-33.9046002","151.1784595"],["-33.9217711","151.2555824"],["-33.8559281","151.2036247"],["-33.7923071","151.2837038"],["-33.9217711","151.2555824"]];
-        // var locs = <%#= @markers %>
+        <script>
+            function initMap() {
+                var userPos = {
+                    lat: <%= @current_user.latitude %>,
+                    lng: <%= @current_user.longitude %>
+                };
 
-        var map = new google.maps.Map(document.querySelector("#map"), {
-          zoom: 12,
-          center: userPos
-        });
-        var marker = new google.maps.Marker({
-          position: userPos,
-          map: map,
-          icon: "http://www.bwwebsites.co.uk/images/nav-icons/hm-icon.png"
-        });
-        for (i = 0; i <locs.length; i++){
-          marker = new google.maps.Marker({
-            position: new google.maps.LatLng(locs[i][0], locs[i][1]),
-            map: map
-          })
-        }
-      }
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?&callback=initMap">
-    </script>
+                var locs = <%= @markers.to_json.html_safe %>
+
+                var map = new google.maps.Map(document.querySelector("#map"), {
+                    zoom: 12,
+                    center: userPos
+                });
+                var marker = new google.maps.Marker({position: userPos, map: map, icon: "http://www.bwwebsites.co.uk/images/nav-icons/hm-icon.png"});
+                for (i = 0; i < locs.length; i++) {
+                    marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(locs[i][0], locs[i][1]),
+                        map: map
+                    })
+                }
+            }
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?&callback=initMap"></script>
 
     </div>
 
-
-  <%#= @current_user.to_json %>
+    <%#= @current_user.to_json %>
 </div>
