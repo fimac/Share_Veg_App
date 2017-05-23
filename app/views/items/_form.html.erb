@@ -5,6 +5,8 @@
 
     <%= f.text_field :description, placeholder: 'Description' %>
 
+    <%= f.select :collected, options_for_select([["Select availability", ""], "Item available now", "Collected"]), :class => 'collected_dropBox' %>
+
     <%= f.label :link %>
     <%= f.file_field :link %>
 
