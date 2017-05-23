@@ -1,5 +1,5 @@
 <div class="flex-height">
-<<<<<<< HEAD
+
   <div class="profile box-white-darken">
     <div class="container row">
 
@@ -64,9 +64,9 @@
   </div>
 
   <!-- Add a new item  -->
-  <% if @current_user %>
+  <% if @current_user && @current_user.id == @user.id  %>
     <button><a href="/items/new">Add new produce</a></button>
   <% end %>
->>>>>>> c6282268b0168677833af5d407b5c16ed830178b
+
 
 </div>
