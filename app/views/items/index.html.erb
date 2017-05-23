@@ -11,17 +11,9 @@
                     <div class="input-field">
                         <%= form_tag(items_path, :method => "get", id: "search-form") do %>
                         <%= text_field_tag :search, params[:search], placeholder: "Search Produce" %>
-                        <%= select_tag :distance, options_for_select([ "1", "5", "10" ], "5") %>
+                        <%= select_tag :distance, options_for_select([ "Select distance km", "1", "5", "10" ], "Select distance (km's)")%>
                         <%= button_tag "Search", :name => nil, :class => "btn waves-effect waves-light z-depth-0"  %>
                         <% end %>
-
-    <!-- <select>
-      <option value="" disabled selected>Choose your option</option>
-      <option value="5">5 km</option>
-      <option value="10"></option>
-      <option value="15">Option 3</option>
-    </select>
-    <label>Materialize Select</label> -->
 
                     </div>
 
