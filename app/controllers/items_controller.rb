@@ -1,10 +1,25 @@
 class ItemsController < ApplicationController
 
+  def map
+
+  end
+
   def index
     @all_items = Item.all
 
+    # { :search => 'carrot', :distance => 5 }
+
     if params[:search]
-      @all_items = Item.search(params[:search]).order("created_at DESC")
+
+      if params[:distance]
+        distance = params[:distance].to_i
+        unfiltered_items = Item.search params[:search]
+        @all_items = check_distance( unfiltered_items, distance )
+      else
+        @all_items =  Item.search params[:search]
+      end
+      # raise "hell"
+
     else
       @all_items = Item.all.order("created_at DESC")
     end
@@ -56,5 +71,18 @@ class ItemsController < ApplicationController
   private
   def item_params
     params.require(:item).permit(:user_id, :name, :description, :image)
+  end
+
+  def check_distance(items, distance = 5)
+    output = []
+
+    items.each do |item|
+      user = item.user
+      item_distance = Geocoder::Calculations.distance_between( "#{ @current_user.latitude }, #{ @current_user.longitude }", "#{ user.latitude }, #{ user.longitude }" )
+      if item_distance <= distance
+        output << item
+      end
+    end
+    return output
   end
 end

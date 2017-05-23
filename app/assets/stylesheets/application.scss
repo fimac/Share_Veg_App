@@ -105,6 +105,11 @@ i.large{
    background-color: rgba(255,255,255,.8);
 }
 
+.box-white-darken {
+   background-color: rgba(255,255,255,.85);
+      overflow: hidden;
+}
+
 .hero {
    background: image-url('O8RDQ80.jpg');
    background-size: cover;
@@ -153,6 +158,7 @@ input:not([type]), input[type=text], input[type=password], input[type=email], in
 .card .card-content {
    height: 110px;
 }
+
 .card.horizontal {
    border: 1px solid rgba(160, 160, 160, 0.2)
 }
@@ -165,6 +171,22 @@ input:not([type]), input[type=text], input[type=password], input[type=email], in
 .btn-floating {
    border-radius: 0;
    background-color: #c5e1a5;
+}
+
+.profile .row .col {
+   padding: 0;
+}
+
+.profile {
+
+}
+
+.collection {
+   border: none;
+}
+
+.collection-item {
+   background-color: rgba(250,250,250,.8);
 }
 
 #myBtn {
