@@ -3,7 +3,11 @@ class Item < ApplicationRecord
   has_many :comments
 
   def self.search(search)
-  where("name ILIKE ?", "%#{search}%")
+    # self.user.latitude
+    # self.user.longitude
+
+    self.where("name ILIKE ?", "%#{search}%")
+
   end
-  
+
 end
