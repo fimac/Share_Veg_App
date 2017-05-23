@@ -7,6 +7,7 @@ class Item < ApplicationRecord
     # self.user.longitude
 
     self.where("name ILIKE ?", "%#{search}%")
+    # self.where("distance ILIKE ?", "%#{distance}%")
 
   end
 
