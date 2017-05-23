@@ -33,6 +33,8 @@
 
     <div class="row">
         <% @all_items.each do |item| %>
+        <!-- If item has a status of available, it will show  -->
+        <% if item.collected == "Item available now" %>
         <div class="col s12 m4">
             <div class="card horizontal z-depth-0">
                 <div class="card-image">
@@ -45,6 +47,7 @@
                     <div class="card-content">
                         <h4><%= link_to(item.name, "/items/#{item.id}") %></h4>
                         <p><%= link_to(item.description, "/items/#{item.id}") %></p>
+                        <p><%= item.collected %></p>
 
                     </div>
                     <div class="card-action">
@@ -68,14 +71,18 @@
             </div>
         </div>
         <% end %>
+        <% end %>
 
+        <!-- Loop through all items, grab the lat and long and push to an empty array -->
         <% @markers = [] %>
         <% @all_items.each do |i|%>
-        <% @markers.push([i.user.latitude, i.user.longitude]) %>
+        <!-- if item has a status of available it will render -->
+            <% if i.collected == "Item available now" %>
+            <% @markers.push([i.user.latitude, i.user.longitude]) %>
+            <% end %>
         <% end %>
-        <%#= @markers.to_json %>
 
-        <!--  Google maps testing -->
+        <!--  Google maps div, style and js -->
         <div id="map"></div>
         <style>
             #map {
@@ -92,9 +99,9 @@
                     lat: <%= @current_user.latitude %>,
                     lng: <%= @current_user.longitude %>
                 };
-
+                // Using markers array from above, saved this to variable
                 var locs = <%= @markers.to_json.html_safe %>
-
+                // Create map, rendering to the div with id of map, use userPos as the center
                 var map = new google.maps.Map(document.querySelector("#map"), {
                     zoom: 12,
                     center: userPos
@@ -112,5 +119,4 @@
 
     </div>
 
-    <%#= @current_user.to_json %>
 </div>

@@ -175,72 +175,84 @@ u10 = User.create({
   i1 = Item.create({
     name: "Pineapple",
     description: "I'm tasty and in good condition",
+    collected: "Item available now",
     image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
     user_id: u2.id
     })
   i2 = Item.create({
     name: "Carrot",
     description: "I'm in poor condition and not very tasty",
+    collected: "Item available now",
     image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
     user_id: u2.id
     })
   i3 = Item.create({
     name: "Apple",
     description: "I'm juicy and crunchy, yummmmmmy come and get me",
+    collected: "Collected",
     image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
     user_id: u2.id
     })
   i4 = Item.create({
     name: "Brussel Sprouts",
     description: "Whole bag of fresh Brussel Sprouts",
+    collected: "Item available now",
     image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
     user_id: u4.id
     })
   i5 = Item.create({
     name: "Olives",
     description: "Home grown and made pickled olives",
+    collected: "Item available now",
     image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
     user_id: u8.id
     })
   i6 = Item.create({
     name: "Mushrooms",
     description: "Straight out of my garden, heaps to share",
+    collected: "Item available now",
     image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
     user_id: u8.id
     })
   i7 = Item.create({
     name: "Organic Cheese",
     description: "Cheese samples from a gift basket",
+    collected: "Item available now",
     image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
     user_id: u6.id
     })
   i8 = Item.create({
     name: "Carrot",
     description: "I'm in poor condition and not very tasty",
+    collected: "Item available now",
     image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
     user_id: u5.id
     })
   i9 = Item.create({
     name: "Potatoes",
     description: "Leftover uncooked potatoes from a 1kg bag",
+    collected: "Item available now",
     image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
     user_id: u9.id
     })
   i10 = Item.create({
     name: "Bread Rolls",
     description: "Overstocked for a party and heaps of unused bread rolls",
+    collected: "Item available now",
     image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
     user_id: u2.id
     })
   i11 = Item.create({
     name: "Butter",
     description: "Massive tub of butter",
+    collected: "Item available now",
     image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
     user_id: u3.id
     })
   i12 = Item.create({
     name: "Spinach",
     description: "Bag of fresh spinach ideal for green juicing or salads",
+    collected: "Item available now",
     image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
     user_id: u9.id
     })
