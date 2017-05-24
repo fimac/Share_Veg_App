@@ -32,9 +32,12 @@
     <!-- This is the list of food items  -->
 
     <div class="row">
+        <% empty_arr = [] %>
+
         <% @all_items.each do |item| %>
         <!-- If item has a status of available, it will show  -->
         <% if item.collected == "Item available now" %>
+        <% empty_arr.push(item) %>
         <div class="col s12 m4">
             <div class="card horizontal z-depth-0">
                 <div class="card-image">
@@ -73,6 +76,8 @@
         </div>
         <% end %>
         <% end %>
+        <p>Number of items: <%= empty_arr.length %></p>
+
 
 
     </div>
