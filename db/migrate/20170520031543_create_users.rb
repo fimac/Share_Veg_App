@@ -8,9 +8,11 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.text :likes
       t.text :dislikes
       t.text :allergies
+      t.string :slug
       t.text :password_digest
 
       t.timestamps
     end
+    add_index :users, :slug, unique: true
   end
 end
