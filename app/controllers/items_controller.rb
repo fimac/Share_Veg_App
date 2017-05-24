@@ -27,6 +27,8 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find_by(id: params['id'])
+    @comment = Comment.new
+    @comment.user == @current_user
   end
 
   def new

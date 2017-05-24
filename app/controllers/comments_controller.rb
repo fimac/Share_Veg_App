@@ -1,10 +1,13 @@
 class CommentsController < ApplicationController
 
+
   def create
     @item = Item.find(params[:item_id])
     @comment = @item.comments.new(comment_params)
     @comment.user = @current_user
     @comment.save
+
+    # raise "hell"
 
     redirect_to item_path(@item)
   end
