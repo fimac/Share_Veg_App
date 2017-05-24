@@ -10,7 +10,6 @@
 <p>
   Posted on: <%= comment.created_at.strftime("%B %d, %Y at %I:%M %P") %>
 </p>
-
 <p>
   <%= link_to 'Delete Comment', [comment.item, comment],
                method: :delete,

@@ -26,7 +26,7 @@
                         </div>
                     </div>
                     <div class="col s12 m1">
-                        <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&markers=color:red|label:I|#{@item.user.latitude}%2C#{@item.user.longitude}&markers=color:green|label:G|#{@current_user.latitude}%2C#{@current_user.longitude}" %>
+                        <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&markers=color:red|label:I|#{@item.user.latitude}%2C#{@item.user.longitude}&markers=color:green|label:G|#{@current_user.latitude}%2C#{@current_user.longitude}&key=AIzaSyDzieKFwTWSVkMls81PAYu-F8wwlv-edpE" %>
                     </div>
 
                 </div>
@@ -66,8 +66,9 @@
     <!-- End of comments field -->
 
     <!-- Edit and delete button for whole listing  -->
-
+    <% if @current_user %>
     <div class="controls">
         <%= link_to("Edit this listing", edit_item_path(@item)) %>
         <%= link_to("Deleting this listing", item_path(@item), method: :delete, data: {confirm: "Are you sure?"}) %>
     </div>
+    <% end %>
