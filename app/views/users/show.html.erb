@@ -14,13 +14,13 @@
                     <li class="collection-item">
                         <strong>Email:
                         </strong><%= @user.email %></li>
-
+                    <% if @current_user && @current_user.id == @user.id  %>
                     <% if @user.building_number && @user.street && @user.city && @user.state && @user.country %>
                     <li class="collection-item">
                         <strong>Address:
                         </strong><%= @user.building_number + " " + @user.street + ", " + @user.city + ", " + @user.state + ", " + @user.country %></li>
                     <% end %>
-
+                    <% end %>
                     <li class="collection-item">
                         <strong>About me:
                         </strong><%= @user.bio %></li>
@@ -34,7 +34,7 @@
                         <strong>Allegies:
                         </strong><%= @user.allergies %></li>
                     <li><%= link_to like_user_path(@user), method: :put do %>
-                        Karma
+                        Karma rating
                         <%= @user.get_upvotes.size %>
                         <% end %>
                     </li>
@@ -61,6 +61,25 @@
         </div>
     </div>
 </div>
+<% if @current_user && @current_user.id == @user.id  %>
+<div class=”ui segment”>
+ <h3>Mailbox</h3>
+ <div class=”ui list”>
+  <div class=”item”>
+   <% @conversations.each do |conversation| %>
+   <% if conversation.sender_id == @current_user.id ||      conversation.recipient_id == @current_user.id %>
+    <% if conversation.sender_id == @current_user.id %>
+      <% recipient = User.find(conversation.recipient_id) %>
+    <% else %>
+      <% recipient = User.find(conversation.sender_id) %>
+    <% end %>
+    <%= link_to recipient.name,   conversation_messages_path(conversation)%>
+   <% end %>
+  <% end %>
+  </div>
+ </div>
+</div>
+<% end %>
 
 <div class=”ui segment”>
  <h3>Mailbox</h3>
@@ -114,7 +133,7 @@
     <% if @current_user %>
         <button class="btn waves-effect waves-light z-depth-0" type="button" name="action"><%= link_to("Add new produce", "/items/new") %></button>
     <% end %>
-
+    <% if @current_user && @current_user.id == @user.id  %>
     <h2 align="center">Past food items you have shared</h2>
     <div class="row">
         <% @user.items.each do |item| %>
@@ -143,4 +162,5 @@
         <% end %>
         <% end %>
     </div>
+    <% end %>
 </div>
