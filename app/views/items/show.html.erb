@@ -33,12 +33,23 @@
                     <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&markers=color:red|label:I|#{@item.user.latitude}%2C#{@item.user.longitude}&markers=color:green|label:G|#{@current_user.latitude}%2C#{@current_user.longitude}" %>
                 </div>
             </div>
+<<<<<<< HEAD
 
             <div class="controls">
                 <button class="btn waves-effect waves-light z-depth-0" type="button" name="action"><%= link_to("Edit", edit_item_path(@item)) %></button>
                 <button class="btn waves-effect waves-light z-depth-0" type="button" name="action"><%= link_to("Delete", item_path(@item), method: :delete, data: {confirm: "Are you sure?"}) %></button>
             </div>
         </div>
+=======
+        </div>
+    <% if @current_user && @current_user.id == @item.user_id  %>
+        <div class="controls">
+            <button class="btn waves-effect waves-light z-depth-0" type="button" name="action"><%= link_to("Edit", edit_item_path(@item)) %></button>
+            <button class="btn waves-effect waves-light z-depth-0" type="button" name="action"><%= link_to("Delete", item_path(@item), method: :delete, data: {confirm: "Are you sure?"}) %></button>
+        </div>
+    <% end %>
+
+>>>>>>> 6211ccc0659f29e8dcc98bbcad66ab4b54c4b360
     </div>
 </div>
 
@@ -70,7 +81,9 @@
     <!-- Edit and delete button for whole listing  -->
 
     <div class="controls">
-        <%= link_to("Edit this listing", edit_item_path(@item)) %>
-        <%= link_to("Deleting this listing", item_path(@item), method: :delete, data: {confirm: "Are you sure?"}) %>
+        <% if @current_user && @current_user.id == @comment.user_id  %>
+          <%= link_to("Edit this listing", edit_item_path(@item)) %>
+          <%= link_to("Deleting this listing", item_path(@item), method: :delete, data: {confirm: "Are you sure?"}) %>
+        <% end %>
     </div>
 </div>

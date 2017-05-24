@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params['id'])
+    @user = User.friendly.find(params[:id])
   end
 
   def new
@@ -32,11 +32,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find_by(id: params["id"])
+    @user = User.friendly.find(params[:id])
   end
 
   def update
-    user = User.find_by( id: params['id'] )
+    user = User.friendly.find(params[:id])
     user.update ( user_params )
     if params[:user][:link]
       cloudinary = Cloudinary::Uploader.upload( params[ "user" ][ "link" ] )
@@ -55,8 +55,11 @@ class UsersController < ApplicationController
   end
 
    private
+
       def user_params
-        params.require(:user).permit(:name, :email, :password, :password_confirmation, :bio, :allergies, :likes, :dislikes, :mobile, :building_number, :street, :city, :state, :country)
+        @user = User.friendly.find(params[:id])
+
+        params.require(:user).permit(:name, :email, :password, :password_confirmation, :bio, :allergies, :likes, :dislikes, :mobile, :building_number, :street, :city, :state, :country, :slug)
       end
 
       def check_if_logged_out
