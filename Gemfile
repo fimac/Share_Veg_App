@@ -14,7 +14,6 @@ gem 'pg', '~> 0.18'
 #Use cloudinary
 gem 'cloudinary'
 gem 'geocoder'
-
 gem 'friendly_id', '~> 5.1.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'

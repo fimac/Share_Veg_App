@@ -47,7 +47,7 @@
                     <div class="card-content">
                         <h4><%= link_to(item.name, "/items/#{item.id}") %></h4>
                         <p><%= link_to(item.description, "/items/#{item.id}") %></p>
-                        <p><%= item.collected %></p>
+
 
                     </div>
                     <div class="card-action">
@@ -60,7 +60,8 @@
                         <% distance_between = distance_between * 1.6 %>
 
                         <h4>
-                            <i class="material-icons">person</i><%= link_to(item.user.name, "/users/#{item.user_id}") %></h4>
+                        <i class="material-icons">person</i><%= link_to(item.user.name, "/users/#{item.user_id}") %></h4>
+                        <p><%= item.collected %></p>
                         <p>Distance from you:
                             <%= distance_between.round(2)%>
                             kms</p>
@@ -73,50 +74,54 @@
         <% end %>
         <% end %>
 
-        <!-- Loop through all items, grab the lat and long and push to an empty array -->
-        <% @markers = [] %>
-        <% @all_items.each do |i|%>
-        <!-- if item has a status of available it will render -->
-            <% if i.collected == "Item available now" %>
-            <% @markers.push([i.user.latitude, i.user.longitude]) %>
-            <% end %>
-        <% end %>
-
-        <!--  Google maps div, style and js -->
-        <div id="map"></div>
-        <style>
-            #map {
-                width: 100%;
-                height: 400px;
-                background-color: grey;
-            }
-
-        </style>
-
-        <script>
-            function initMap() {
-                var userPos = {
-                    lat: <%= @current_user.latitude %>,
-                    lng: <%= @current_user.longitude %>
-                };
-                // Using markers array from above, saved this to variable
-                var locs = <%= @markers.to_json.html_safe %>
-                // Create map, rendering to the div with id of map, use userPos as the center
-                var map = new google.maps.Map(document.querySelector("#map"), {
-                    zoom: 12,
-                    center: userPos
-                });
-                var marker = new google.maps.Marker({position: userPos, map: map, icon: "http://www.bwwebsites.co.uk/images/nav-icons/hm-icon.png"});
-                for (i = 0; i < locs.length; i++) {
-                    marker = new google.maps.Marker({
-                        position: new google.maps.LatLng(locs[i][0], locs[i][1]),
-                        map: map
-                    })
-                }
-            }
-        </script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbIJZ9EErSr9JKgU1aHTgjCCY_m-v78wE&callback=initMap"></script>
 
     </div>
+
+</div>
+
+<div>
+  <!-- Loop through all items, grab the lat and long and push to an empty array -->
+  <% @markers = [] %>
+  <% @all_items.each do |i|%>
+  <!-- if item has a status of available it will render -->
+      <% if i.collected == "Item available now" %>
+      <% @markers.push([i.user.latitude, i.user.longitude]) %>
+      <% end %>
+  <% end %>
+
+  <!--  Google maps div, style and js -->
+  <div id="map"></div>
+  <style>
+      #map {
+          width: 100%;
+          height: 400px;
+          background-color: grey;
+      }
+
+  </style>
+
+  <script>
+      function initMap() {
+          var userPos = {
+              lat: <%= @current_user.latitude %>,
+              lng: <%= @current_user.longitude %>
+          };
+          // Using markers array from above, saved this to variable
+          var locs = <%= @markers.to_json.html_safe %>
+          // Create map, rendering to the div with id of map, use userPos as the center
+          var map = new google.maps.Map(document.querySelector("#map"), {
+              zoom: 12,
+              center: userPos
+          });
+          var marker = new google.maps.Marker({position: userPos, map: map, icon: "http://www.bwwebsites.co.uk/images/nav-icons/hm-icon.png"});
+          for (i = 0; i < locs.length; i++) {
+              marker = new google.maps.Marker({
+                  position: new google.maps.LatLng(locs[i][0], locs[i][1]),
+                  map: map
+              })
+          }
+      }
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbIJZ9EErSr9JKgU1aHTgjCCY_m-v78wE&callback=initMap"></script>
 
 </div>

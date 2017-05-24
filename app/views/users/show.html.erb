@@ -1,7 +1,7 @@
 <div class="flex-height">
 
     <div class="profile box-white-darken">
-        <div class="container row">
+        <div class="container row border">
 
             <h1><%= @user.name %></h1>
 
@@ -38,9 +38,9 @@
 
             <div class="col s12 m3 collection">
                 <%if @user.image %>
-                <div>
+
                     <%= image_tag( @user.image ) %>
-                </div>
+
                 <%end %>
             </div>
 
@@ -51,59 +51,73 @@
                 <button class="btn waves-effect waves-light z-depth-0" type="button" name="action"><%= link_to("Delete", "/users/#{@user.id}", method: :delete, data: { confirm: "Are you sure?" }) %></button>
                 <% end %>
             </div>
-            <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@user.latitude}%2C#{@user.longitude}" %>
+            <!-- <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@user.latitude}%2C#{@user.longitude}" %> -->
 
         </div>
     </div>
 </div>
 
 <div class="container">
-    <h2>Food items currently available</h2>
-
-    <div>
+    <h2 align="center">Food items currently available</h2>
+    <div class="row">
         <% @user.items.each do |item| %>
         <% if item.collected == "Item available now" %>
-        <p>
-            <%= link_to(item.name, item_path(item)) %>
-        </p>
-        <p>
-            <%= item.description %>
-        </p>
-        <p>
-            <%= item.collected %>
-        </p>
-        <div>
-            <%= image_tag( item.image ) %>
+
+        <div class="col s12 m4">
+            <div class="card horizontal z-depth-0">
+                <div class="card-image">
+                    <% if item.image %>
+                    <%= link_to(image_tag(item.image), "/items/#{item.id}") %>
+                    <% end %>
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h4><%= link_to(item.name, "/items/#{item.id}") %></h4>
+                        <p><%= link_to(item.description, "/items/#{item.id}") %></p>
+                    </div>
+                    <div class="card-action">
+                        <h4><i class="material-icons">person</i><%= link_to(item.user.name, "/users/#{item.user_id}") %></h4>
+                        <p><%= item.collected %></p>
+                    </div>
+                </div>
+            </div>
         </div>
+
         <% end %>
         <% end %>
     </div>
 
     <!-- Add a new item  -->
-    <% if @current_user && @current_user.id == @user.id  %>
-    <button>
-        <a href="/items/new">Add new produce</a>
-    </button>
+    <% if @current_user %>
+        <button class="btn waves-effect waves-light z-depth-0" type="button" name="action"><%= link_to("Add new produce", "/items/new") %></button>
     <% end %>
 
-</div>
+    <h2 align="center">Past food items you have shared</h2>
+    <div class="row">
+        <% @user.items.each do |item| %>
+        <% if item.collected == "Collected" %>
 
-<div class="container">
-    <h2>Past food items you have shared</h2>
-    <% @user.items.each do |item| %>
-    <% if item.collected == "Collected" %>
-    <p>
-        <%= link_to(item.name, item_path(item)) %>
-    </p>
-    <p>
-        <%= item.description %>
-    </p>
-    <p>
-        <%= item.collected %>
-    </p>
-    <div>
-        <%= image_tag( item.image ) %>
+        <div class="col s12 m4">
+            <div class="card horizontal z-depth-0">
+                <div class="card-image">
+                    <% if item.image %>
+                    <%= link_to(image_tag(item.image), "/items/#{item.id}") %>
+                    <% end %>
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h4><%= link_to(item.name, "/items/#{item.id}") %></h4>
+                        <p><%= link_to(item.description, "/items/#{item.id}") %></p>
+                    </div>
+                    <div class="card-action">
+                        <h4><i class="material-icons">person</i><%= link_to(item.user.name, "/users/#{item.user_id}") %></h4>
+                        <p><%= item.collected %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <% end %>
+        <% end %>
     </div>
-    <% end %>
-    <% end %>
 </div>
