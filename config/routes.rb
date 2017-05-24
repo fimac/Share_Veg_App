@@ -9,7 +9,12 @@ post '/login' => 'session#create'
 delete '/logout' => 'session#destroy'
 
 
-resources :users
+resources :users do
+  member do
+    put "like", to: "users#upvote"
+    put "dislike", to: "users#downvote"
+  end
+end
 resources :items do
   resources :comments
 end
