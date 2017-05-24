@@ -176,84 +176,84 @@ u10 = User.create({
     name: "Pineapple",
     description: "I'm tasty and in good condition",
     collected: "Item available now",
-    image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+    image: "https://www.organicfacts.net/wp-content/uploads/2013/06/Pineapple.jpg",
     user_id: u2.id
     })
   i2 = Item.create({
     name: "Carrot",
     description: "I'm in poor condition and not very tasty",
     collected: "Item available now",
-    image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+    image: "http://dingo.care2.com/pictures/greenliving/uploads/2016/05/carrots.jpg",
     user_id: u2.id
     })
   i3 = Item.create({
     name: "Apple",
     description: "I'm juicy and crunchy, yummmmmmy come and get me",
     collected: "Collected",
-    image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+    image: "https://typewritermonkeys.files.wordpress.com/2015/04/apples.jpg",
     user_id: u2.id
     })
   i4 = Item.create({
     name: "Brussel Sprouts",
     description: "Whole bag of fresh Brussel Sprouts",
     collected: "Item available now",
-    image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+    image: "https://bonnieplants.com/wp-content/uploads/brussels-sprouts.jpg",
     user_id: u4.id
     })
   i5 = Item.create({
     name: "Olives",
     description: "Home grown and made pickled olives",
     collected: "Item available now",
-    image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+    image: "https://www.bbcgoodfood.com/sites/default/files/glossary/olives-cropped.jpg",
     user_id: u8.id
     })
   i6 = Item.create({
     name: "Mushrooms",
     description: "Straight out of my garden, heaps to share",
     collected: "Item available now",
-    image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+    image: "https://upload.wikimedia.org/wikipedia/commons/f/ff/Champignons_Agaricus.jpg",
     user_id: u8.id
     })
   i7 = Item.create({
     name: "Organic Cheese",
     description: "Cheese samples from a gift basket",
     collected: "Item available now",
-    image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+    image: "http://www.organicwholefoods.org/contents/media/cheese-aged-cheddar-org-dairy-farm.jpg",
     user_id: u6.id
     })
   i8 = Item.create({
     name: "Carrot",
-    description: "I'm in poor condition and not very tasty",
+    description: "I'm in poor condition but would be great for soups.",
     collected: "Item available now",
-    image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+    image: "http://images.parents.mdpcdn.com/sites/parents.com/files/styles/scale_1500_1500/public/images/550_101909647.jpg",
     user_id: u5.id
     })
   i9 = Item.create({
     name: "Potatoes",
     description: "Leftover uncooked potatoes from a 1kg bag",
     collected: "Item available now",
-    image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+    image: "https://assets.precisionnutrition.com/wp-content/uploads/2013/01/potatoes.jpg",
     user_id: u9.id
     })
   i10 = Item.create({
     name: "Bread Rolls",
     description: "Overstocked for a party and heaps of unused bread rolls",
     collected: "Item available now",
-    image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+    image: "http://www.talesfromthekitchenshed.com/sj-desford/uploads/2016/04/bread_rolls_pile600.jpg",
     user_id: u2.id
     })
   i11 = Item.create({
     name: "Butter",
     description: "Massive tub of butter",
     collected: "Item available now",
-    image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+    image: "http://www.organicdairyfarmers.com.au/images/8bit-new/home-product-panel_up_02.png",
     user_id: u3.id
     })
   i12 = Item.create({
     name: "Spinach",
     description: "Bag of fresh spinach ideal for green juicing or salads",
     collected: "Item available now",
-    image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+    image: "https://cdn.authoritynutrition.com/wp-content/uploads/2015/09/white-bowl-with-fresh-spinach-leaves.jpg",
     user_id: u9.id
     })
 puts "Item Count: #{Item.all.count }"
