@@ -61,6 +61,10 @@ class UsersController < ApplicationController
     redirect_to :back
     end
 
+    def notifications
+      @all_conversations = Conversation.all
+    end
+
    private
 
       def user_params
