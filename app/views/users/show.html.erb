@@ -93,7 +93,7 @@
     </div>
 
     <!-- Add a new item  -->
-    <% if @current_user && @current_user.id == @user.id %>
+    <% if @current_user %>
         <button class="btn waves-effect waves-light z-depth-0" type="button" name="action"><%= link_to("Add new produce", "/items/new") %></button>
     <% end %>
 
