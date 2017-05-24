@@ -55,10 +55,18 @@
         </p>
 
     </div>
+
+    <button> <%= link_to 'Message me about item', conversations_path(sender_id: @current_user.id, recipient_id: @item.user.id), method: 'post' %></button>
+
+
     <!-- End of item -->
 
     <!-- Comments field  -->
+
+    <!-- <#%= render 'messages/index' %> -->
     <div>
+
+
         <h2>Comments</h2>
 
         <%= render @item.comments %>
