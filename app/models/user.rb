@@ -1,7 +1,9 @@
 class User < ApplicationRecord
+  belongs_to :user
+  acts_as_votable
 
-  extend FriendlyId
-  friendly_id :name, use: :slugged
+  # extend FriendlyId
+  # friendly_id :name, use: :slugged
 
   has_secure_password
 
