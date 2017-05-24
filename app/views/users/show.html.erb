@@ -34,7 +34,7 @@
                         <strong>Allegies:
                         </strong><%= @user.allergies %></li>
                     <li><%= link_to like_user_path(@user), method: :put do %>
-                        Karma
+                        Karma rating
                         <%= @user.get_upvotes.size %>
                         <% end %>
                     </li>
