@@ -45,9 +45,9 @@ ActiveRecord::Schema.define(version: 20170524061136) do
     t.text     "body"
     t.integer  "conversation_id"
     t.integer  "user_id"
-    t.boolean  "read"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.boolean  "read",            default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
     t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20170524061136) do
     t.text     "latitude"
     t.text     "longitude"
     t.integer  "mobile"
+    t.index ["slug"], name: "index_users_on_slug", unique: true, using: :btree
   end
 
   create_table "votes", force: :cascade do |t|
