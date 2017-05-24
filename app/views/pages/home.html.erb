@@ -5,7 +5,9 @@
         <h1>Share your food</h1>
         <h3>Do your bit for your community <br>
           and help tackle food waste</h3>
+          <% if !@current_user %>
         <button class="btn waves-effect waves-light z-depth-0 light-green darken-1" type="submit" name="action"><%= link_to 'Sign Up', new_user_path %></button>
+        <% end %>
       </div>
       <div class="col s12 m4"></div>
   </div>
