@@ -1,4 +1,13 @@
 class User < ApplicationRecord
+  # MESSAGES
+  validates :name, :email,  presence: true
+  validates :email, uniqueness: true
+  validates :password, length: { minimum: 4 }
+  validates :name, length: { minimum: 2 }
+
+  has_many :conversations, :foreign_key => :sender_id
+  
+  # UPVOTE
   belongs_to :user
   acts_as_votable
 
