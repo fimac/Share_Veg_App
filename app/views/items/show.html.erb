@@ -14,6 +14,7 @@
                         <div class="card-content">
                             <h4><%= @item.name %></h4>
                             <p><%= @item.description %></p>
+                            <p><%= @item.collected %></p>
                         </div>
                         <div class="card-action">
                             <% distance_between = Geocoder::Calculations.distance_between([@item.user.latitude,@item.user.longitude], [@current_user.latitude, @current_user.longitude]) %>
@@ -32,11 +33,12 @@
 
             </div>
         </div>
-
+    <% if @current_user && @current_user.id == @item.user_id  %>
         <div class="controls">
             <button class="btn waves-effect waves-light z-depth-0" type="button" name="action"><%= link_to("Edit", edit_item_path(@item)) %></button>
             <button class="btn waves-effect waves-light z-depth-0" type="button" name="action"><%= link_to("Delete", item_path(@item), method: :delete, data: {confirm: "Are you sure?"}) %></button>
         </div>
+    <% end %>
 
     </div>
 
@@ -67,9 +69,8 @@
     <!-- Edit and delete button for whole listing  -->
 
     <div class="controls">
-
-        <% if @current_user.id == @item.user.id  %>
+        <% if @current_user && @current_user.id == @comment.user_id  %>
           <%= link_to("Edit this listing", edit_item_path(@item)) %>
           <%= link_to("Deleting this listing", item_path(@item), method: :delete, data: {confirm: "Are you sure?"}) %>
-         <% end %>
+        <% end %>
     </div>

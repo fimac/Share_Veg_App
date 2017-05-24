@@ -27,6 +27,8 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find_by(id: params['id'])
+    @comment = Comment.new
+    @comment.user == @current_user
   end
 
   def new
@@ -70,7 +72,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:user_id, :name, :description, :image)
+    params.require(:item).permit(:user_id, :name, :description, :collected, :image)
   end
 
   def check_distance(items, distance = 5)
