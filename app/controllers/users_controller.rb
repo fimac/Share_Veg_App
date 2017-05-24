@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.friendly.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def new
@@ -32,11 +32,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.friendly.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def update
-    user = User.friendly.find(params[:id])
+    user = User.find(params[:id])
     user.update ( user_params )
     if params[:user][:link]
       cloudinary = Cloudinary::Uploader.upload( params[ "user" ][ "link" ] )
@@ -54,10 +54,15 @@ class UsersController < ApplicationController
     redirect_to "/users"
   end
 
+  def upvote
+    @user = User.find_by(id: params['id'])
+    @user.upvote_by @current_user
+    redirect_to :back
+    end
+
    private
 
       def user_params
-        @user = User.friendly.find(params[:id])
 
         params.require(:user).permit(:name, :email, :password, :password_confirmation, :bio, :allergies, :likes, :dislikes, :mobile, :building_number, :street, :city, :state, :country, :slug)
       end

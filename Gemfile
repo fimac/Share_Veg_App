@@ -14,7 +14,7 @@ gem 'pg', '~> 0.18'
 #Use cloudinary
 gem 'cloudinary'
 gem 'geocoder'
-gem 'friendly_id', '~> 5.1.0'
+# gem 'friendly_id', '~> 5.1.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'acts_as_votable', '~> 0.10.0'
 
 
 # Use Capistrano for deployment
