@@ -21,8 +21,7 @@
             <% if @current_user %>
             <li><a href="/items">Search</a></li>
               <li><%= link_to "Log Out", "/logout", method: :delete %></li>
-              <li><a href= "<%= user_path(@current_user) %>">Hi <%= @current_user.name %></a></li>
-              <li><a href="#"><span class=" test new badge" data-badge-caption="Mail"></span></a></li>
+              <li><a href= "<%= user_path(@current_user) %>">Hi <%= @current_user.name %> <span class=" test new badge light-green lighten-3" data-badge-caption="Mail"></span></a></li>
 
             <% else %>
               <li><a href="/login">Log In</a></li>
