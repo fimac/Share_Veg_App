@@ -1,9 +1,10 @@
 <% if @over_ten %>
  <%= link_to 'Show Previous', '?m=all' %>
 <% end %>
-<div class=”ui segment”>
+<div class="ui segment">
+  <%#= @messages.to_json %>
  <% @messages.each do |message| %>
- <% if message.conversation.recipient_id == @current_user.id && message.read == false %>
+ <% if message.user_id != @current_user.id && message.read == false %>
   <% message.read = true %>
   <% message.save %>
 

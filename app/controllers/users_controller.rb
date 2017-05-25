@@ -62,7 +62,15 @@ class UsersController < ApplicationController
     end
 
     def notifications
-      @all_conversations = Conversation.all
+      # @all_conversations = Conversation.all
+      # get me every convo that i'm in, then get every message within those convo's
+      @messages = Message.where(read: false)
+      # @messages = Message.all
+
+      respond_to do |f|
+        f.html {}
+        f.json { render json: @messages }
+      end
     end
 
    private
