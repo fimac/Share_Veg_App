@@ -1,8 +1,8 @@
 console.log("eat vegetables");
 // console.log(currentUser);
 var youveGotMail = function (){
-  $(".test").css({
-    background: "#7cb342"
+  $("#megryan").css({
+    color: "red"
   });
 };
 

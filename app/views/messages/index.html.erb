@@ -44,6 +44,11 @@
       </thead>
       <tbody>
       <% @messages.each do |message| %>
+      <% if message.user_id != @current_user.id && message.read == false %>
+      <% message.read = true %>
+      <% message.save %>
+
+       <% end %>
         <% if message.body %>
           <% user = User.find(message.user_id) %>
             <tr>
