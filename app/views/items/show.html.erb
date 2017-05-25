@@ -4,7 +4,7 @@
             <h1>Request Food Item</h1>
             <!--Item name, image and description -->
 
-            <div class="row">
+            <div class="row item">
                 <div class="col s12 m4">
                     <div class="card horizontal z-depth-0">
                         <div class="card-image">
@@ -15,7 +15,6 @@
                             <div class="card-content">
                                 <h4><%= @item.name %></h4>
                                 <p><%= @item.description %></p>
-                                <p><%= @item.collected %></p>
                             </div>
                             <div class="card-action">
                                 <% distance_between = Geocoder::Calculations.distance_between([@item.user.latitude,@item.user.longitude], [@current_user.latitude, @current_user.longitude]) %>
@@ -23,40 +22,43 @@
                                 <% distance_between = distance_between * 1.6 %>
                                 <h4>
                                     <i class="material-icons">person</i><%= link_to(@item.user.name, "/users/#{@item.user_id}") %></h4>
+                                    <p><%= @item.collected %></p>
                                 <p>Distance: <%= distance_between.round(2)%> kms</p>
                             </div>
                         </div>
                     </div>
+                    <div>
+                        <p>
+                            Item available from:
+                            <%= @item.created_at.strftime("%B %d, %Y  %I:%M %P") %>
+                        </p>
+
+                    </div>
+                    <% if @current_user && @current_user.id == @item.user_id  %>
+                        <div class="controls">
+                            <button class="btn waves-effect waves-light z-depth-0" type="button" name="action"><%= link_to("Edit", edit_item_path(@item)) %></button>
+                            <button class="btn waves-effect waves-light z-depth-0" type="button" name="action"><%= link_to("Delete", item_path(@item), method: :delete, data: {confirm: "Are you sure?"}) %></button>
+                        </div>
+                    <% else %>
+                        <button class="btn waves-effect waves-light z-depth-0" type="button" name="action"> <%= link_to 'Message me about item', conversations_path(sender_id: @current_user.id, recipient_id: @item.user.id), method: 'post' %></button>
+                    <% end %>
+
 
                 </div>
 
-                    <div class="col s12 m1">
-                        <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&markers=color:red|label:I|#{@item.user.latitude}%2C#{@item.user.longitude}&markers=color:green|label:G|#{@current_user.latitude}%2C#{@current_user.longitude}&key=AIzaSyDzieKFwTWSVkMls81PAYu-F8wwlv-edpE" %>
+                    <div class="col s12 m8">
+                        <%= image_tag "http://maps.google.com/maps/api/staticmap?size=831x315&sensor=false&markers=color:red|label:I|#{@item.user.latitude}%2C#{@item.user.longitude}&markers=color:green|label:G|#{@current_user.latitude}%2C#{@current_user.longitude}&key=AIzaSyDzieKFwTWSVkMls81PAYu-F8wwlv-edpE" %>
                     </div>
 
             </div>
-        </div>
 
-    <% if @current_user && @current_user.id == @item.user_id  %>
-        <div class="controls">
-            <button class="btn waves-effect waves-light z-depth-0" type="button" name="action"><%= link_to("Edit", edit_item_path(@item)) %></button>
-            <button class="btn waves-effect waves-light z-depth-0" type="button" name="action"><%= link_to("Delete", item_path(@item), method: :delete, data: {confirm: "Are you sure?"}) %></button>
         </div>
-    <% end %>
 
     </div>
 </div>
 
 <div class="container">
-    <div>
-        <p>
-            Item available from:
-            <%= @item.created_at.strftime("%B %d, %Y  %I:%M %P") %>
-        </p>
 
-    </div>
-
-    <button> <%= link_to 'Message me about item', conversations_path(sender_id: @current_user.id, recipient_id: @item.user.id), method: 'post' %></button>
 
 
     <!-- End of item -->
@@ -64,18 +66,22 @@
     <!-- Comments field  -->
 
     <!-- <#%= render 'messages/index' %> -->
-    <div>
+    <div class="row">
+        <% @comments = @item.comments %>
 
-
-        <h2>Comments</h2>
-
-        <%= render @item.comments %>
-
-        <hr>
-
-        <h2>Add a comment:</h2>
-
+        <div class="col s12 m4">
+        <h2>Add Comment</h2>
         <%= render 'comments/form' %>
+        </div>
+
+        <!-- <div class="col m4"></div> -->
+
+        <div class="col s12 m8">
+        <h2>Comments</h2>
+        <% @item.comments.each do |comment| %>
+        <p><%= comment.post %><%= comment.created_at %></p>
+        <% end %>
+        </div>
 
     </div>
     <!-- End of comments field -->
@@ -88,6 +94,5 @@
           <%= link_to("Deleting this listing", item_path(@item), method: :delete, data: {confirm: "Are you sure?"}) %>
         <% end %>
     </div>
-
-</div>
     <% end %>
+</div>

@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20170524061136) do
     t.text     "likes"
     t.text     "dislikes"
     t.text     "allergies"
+    t.string   "slug"
     t.text     "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
@@ -72,7 +73,7 @@ ActiveRecord::Schema.define(version: 20170524061136) do
     t.text     "latitude"
     t.text     "longitude"
     t.integer  "mobile"
-    t.string   "slug"
+    t.index ["slug"], name: "index_users_on_slug", unique: true, using: :btree
   end
 
   create_table "votes", force: :cascade do |t|

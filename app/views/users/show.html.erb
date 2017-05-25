@@ -5,7 +5,16 @@
 
             <h1><%= @user.name %></h1>
 
-            <div class="col s12 m9">
+            <div class="fixed-size col s12 m3">
+              <h2> </h2>
+                <%if @user.image %>
+                  <div class="round">
+                    <%= image_tag( @user.image ) %>
+                  </div>
+                <%end %>
+            </div>
+
+            <div class="fixed-size col s12 m6">
                 <ul class="collection">
                     <li></li>
                     <li class="collection-item">
@@ -33,53 +42,53 @@
                     <li class="collection-item">
                         <strong>Allegies:
                         </strong><%= @user.allergies %></li>
-                    <li><%= link_to like_user_path(@user), method: :put do %>
-                        Karma rating
-                        <%= @user.get_upvotes.size %>
-                        <% end %>
-                    </li>
                 </ul>
             </div>
 
-            <div class="col s12 m3 collection">
-                <%if @user.image %>
-
-                    <%= image_tag( @user.image ) %>
-
-                <%end %>
+            <div class="fixed-size col s12 m3 center">
+              <h2>Karma rating</h2>
+              <div class="circle">
+                <p><%= link_to like_user_path(@user), method: :put do %> <i class="heart large material-icons">favorite</i>
+                    <h1><%= @user.get_upvotes.size %></h1>
+                    <% end %></p>
+              </div>
             </div>
 
-            <div class="controls">
-                <% if @current_user && @current_user.id == @user.id  %>
-                <button class="btn waves-effect waves-light z-depth-0" type="button" name="action"><%= link_to("Edit", "/users/#{@user.id}/edit") %></button>
-
-                <button class="btn waves-effect waves-light z-depth-0" type="button" name="action"><%= link_to("Delete", "/users/#{@user.id}", method: :delete, data: { confirm: "Are you sure?" }) %></button>
-                <% end %>
-            </div>
             <!-- <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@user.latitude}%2C#{@user.longitude}" %> -->
 
         </div>
+
+        <div class="container controls">
+            <% if @current_user && @current_user.id == @user.id  %>
+            <button class="btn waves-effect waves-light z-depth-0" type="button" name="action"><%= link_to("Edit", "/users/#{@user.id}/edit") %></button>
+
+            <button class="btn waves-effect waves-light z-depth-0" type="button" name="action"><%= link_to("Delete", "/users/#{@user.id}", method: :delete, data: { confirm: "Are you sure?" }) %></button>
+            <% end %>
+        </div>
     </div>
 </div>
-<% if @current_user && @current_user.id == @user.id  %>
-<div class=”ui segment”>
- <h3>Mailbox</h3>
- <div class=”ui list”>
-  <div class=”item”>
-   <% @conversations.each do |conversation| %>
-   <% if conversation.sender_id == @current_user.id ||      conversation.recipient_id == @current_user.id %>
-    <% if conversation.sender_id == @current_user.id %>
-      <% recipient = User.find(conversation.recipient_id) %>
-    <% else %>
-      <% recipient = User.find(conversation.sender_id) %>
+
+  <div class="container center">
+    <% if @current_user && @current_user.id == @user.id  %>
+     <h1 align="center">Mailbox</h1>
+        <div class="row">
+       <% @conversations.each do |conversation| %>
+       <% if conversation.sender_id == @current_user.id || conversation.recipient_id == @current_user.id %>
+        <% if conversation.sender_id == @current_user.id %>
+          <% recipient = User.find(conversation.recipient_id) %>
+        <% else %>
+          <% recipient = User.find(conversation.sender_id) %>
+        <% end %>
+
+          <div class="col s12 m2">
+            <%= link_to recipient.name, conversation_messages_path(conversation)%>
+          </div>
+
+       <% end %>
+      <% end %>
+        </div>
     <% end %>
-    <%= link_to recipient.name,   conversation_messages_path(conversation)%>
-   <% end %>
-  <% end %>
   </div>
- </div>
-</div>
-<% end %>
 
 <div class="container">
     <h2 align="center">Food items currently available</h2>
@@ -112,7 +121,7 @@
     </div>
 
     <!-- Add a new item  -->
-    <% if @current_user %>
+    <% if @current_user && @current_user.id == @user.id   %>
         <button class="btn waves-effect waves-light z-depth-0" type="button" name="action"><%= link_to("Add new produce", "/items/new") %></button>
     <% end %>
     <% if @current_user && @current_user.id == @user.id  %>
