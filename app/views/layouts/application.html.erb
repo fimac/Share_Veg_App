@@ -22,6 +22,7 @@
             <li><a href="/items">Search</a></li>
               <li><%= link_to "Log Out", "/logout", method: :delete %></li>
               <li><a href= "<%= user_path(@current_user) %>">Hi <%= @current_user.name %></a></li>
+              <li class='test'><a href="#">Mail</a></li>
 
             <% else %>
               <li><a href="/login">Log In</a></li>
@@ -80,9 +81,22 @@
       </div>
     </div>
   </footer>
+  <% if @current_user %>
   <script>
-    getMessages(<%= @current_user.id %>)
+
+    $(document).ready(function(){
+
+      var MESSAGE_TIMER = window.setInterval(function(){
+        getMessages(<%= @current_user.id %>);
+      }, 3000);
+    })
+
+    //   // var MESSAGE_TIMER = window.setInterval(function(){
+    //   //   getMessages();
+    //   // });
+
   </script>
+  <% end %>
 
   </body>
 </html>
