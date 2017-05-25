@@ -2,7 +2,7 @@ console.log("eat vegetables");
 // console.log(currentUser);
 var youveGotMail = function (){
   $(".test").css({
-    background: "red"
+    background: "#7cb342"
   });
 };
 
