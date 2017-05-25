@@ -48,8 +48,6 @@ ActiveRecord::Schema.define(version: 20170524061136) do
     t.boolean  "read",            default: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
-    t.index ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
-    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -60,6 +58,7 @@ ActiveRecord::Schema.define(version: 20170524061136) do
     t.text     "likes"
     t.text     "dislikes"
     t.text     "allergies"
+    t.string   "slug"
     t.text     "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
@@ -72,7 +71,7 @@ ActiveRecord::Schema.define(version: 20170524061136) do
     t.text     "latitude"
     t.text     "longitude"
     t.integer  "mobile"
-    t.string   "slug"
+    t.index ["slug"], name: "index_users_on_slug", unique: true, using: :btree
   end
 
   create_table "votes", force: :cascade do |t|
@@ -89,6 +88,4 @@ ActiveRecord::Schema.define(version: 20170524061136) do
     t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
   end
 
-  add_foreign_key "messages", "conversations"
-  add_foreign_key "messages", "users"
 end
