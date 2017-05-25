@@ -6,7 +6,8 @@ class User < ApplicationRecord
   validates :name, length: { minimum: 2 }
 
   has_many :conversations, :foreign_key => :sender_id
-  
+  has_many :messages, through: :conversations, dependent: :destroy
+
   # UPVOTE
   belongs_to :user
   acts_as_votable

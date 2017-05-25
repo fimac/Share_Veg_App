@@ -1,3 +1,4 @@
+Message.destroy_all
 User.destroy_all
 u1 = User.create({
   name: "Vegodash",
