@@ -5,7 +5,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 4 }
   validates :name, length: { minimum: 2 }
 
-  has_many :conversations, :foreign_key => :sender_id
+  has_many :conversations, :foreign_key => :sender_id, dependent: :destroy
   has_many :messages, through: :conversations, dependent: :destroy
 
   # UPVOTE
