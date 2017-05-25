@@ -68,10 +68,11 @@
     </div>
 </div>
 
-  <div class="container center">
+  <div class="mailbox container center">
     <% if @current_user && @current_user.id == @user.id  %>
      <h1 align="center">Mailbox</h1>
         <div class="row">
+          <h3>You have Message From</h3>
        <% @conversations.each do |conversation| %>
        <% if conversation.sender_id == @current_user.id || conversation.recipient_id == @current_user.id %>
         <% if conversation.sender_id == @current_user.id %>
@@ -81,7 +82,8 @@
         <% end %>
 
           <div class="col s12 m2">
-            <%= link_to recipient.name, conversation_messages_path(conversation)%>
+              <button class="btn waves-effect waves-light z-depth-0" type="button" name="action"><%= link_to recipient.name, conversation_messages_path(conversation)%></button>
+
           </div>
 
        <% end %>
@@ -89,6 +91,8 @@
         </div>
     <% end %>
   </div>
+
+<hr class="container">
 
 <div class="container">
     <h2 align="center">Food items currently available</h2>
@@ -125,6 +129,9 @@
         <button class="btn waves-effect waves-light z-depth-0" type="button" name="action"><%= link_to("Add new produce", "/items/new") %></button>
     <% end %>
     <% if @current_user && @current_user.id == @user.id  %>
+
+    <hr>
+
     <h2 align="center">Past food items you have shared</h2>
     <div class="row">
         <% @user.items.each do |item| %>
