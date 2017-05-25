@@ -86,8 +86,8 @@
   <% @markers = [] %>
   <% @all_items.each do |i|%>
   <!-- if item has a status of available it will render -->
-      <% if i.collected == "Item available now" %>
-      <% @markers.push([i.user.latitude, i.user.longitude]) %>
+      <% if i.collected == "Item available now" && i.user %>
+        <% @markers.push([i.user.latitude, i.user.longitude]) %>
       <% end %>
   <% end %>
 
