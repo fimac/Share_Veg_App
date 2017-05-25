@@ -26,7 +26,8 @@ class UsersController < ApplicationController
     end
     if @user.save
       session[:user_id] = @user.id
-      redirect_to user_path( @user )
+      # added the below, so if a new user signs up they go to edit page
+      redirect_to edit_user_path( @user )
     else
       render :new # Show them the Sign Up form again
     end
