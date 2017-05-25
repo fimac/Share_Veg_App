@@ -58,7 +58,7 @@ class UsersController < ApplicationController
 
   def upvote
     @user = User.find_by(id: params['id'])
-    @user.upvote_by @current_user
+    @user.upvote_by @current_user, :duplicate => true
     redirect_to :back
     end
 
