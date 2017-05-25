@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post '/login' => 'session#create'
   delete '/logout' => 'session#destroy'
 
+  get '/users/:id/notifications' => 'users#notifications'
 
   resources :users do
     member do
