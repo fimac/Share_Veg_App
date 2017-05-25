@@ -10,6 +10,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.text :allergies
       t.string :slug
       t.text :password_digest
+      t.text :public_id
 
       def self.up
     add_column :users, :cached_votes_total, :integer, :default => 0
