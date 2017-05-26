@@ -5,7 +5,7 @@ u1 = User.create({
   email: "vegodash@email.com",
   password: "chicken",
   password_confirmation: "chicken",
-  image: "https://cdn.dribbble.com/users/107759/screenshots/3442108/galactic_1x.png",
+  image: "http://photos1.blogger.com/blogger/4670/2333/1600/DSC06290.jpg",
   mobile: "0494384534",
   bio: "I love the vegetables",
   likes: "veggies",
