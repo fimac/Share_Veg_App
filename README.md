@@ -2,7 +2,7 @@
 
 WasteNot: DO YOUR BIT FOR YOUR COMMUNITY AND HELP TACKLE FOOD WASTE
 
-Developers: Lynda Ly, Fiona McCawley and Katie Peterson <3
+Developers: Fiona McCawley, Katie Peterson and Lynda Ly. &hearts 
 
 Wireframes:
   https://www.dropbox.com/sh/bh1m9m3pfy5yab9/AADkJOSibBlevGCPMHGzZX1Ka?dl=0
