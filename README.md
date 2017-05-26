@@ -2,12 +2,19 @@
 
 WasteNot: DO YOUR BIT FOR YOUR COMMUNITY AND HELP TACKLE FOOD WASTE
 
-Developers: Fiona McCawley, Katie Peterson and Lynda Ly. &hearts 
+Developers: Fiona McCawley, Katie Peterson and Lynda Ly.
 
 Wireframes:
   https://www.dropbox.com/sh/bh1m9m3pfy5yab9/AADkJOSibBlevGCPMHGzZX1Ka?dl=0
 
-Technologies:
+  Technologies:
+
+  -HTML 5
+  -CSS 3
+  -Ruby Rails
+  -jQuery
+  -JavaScript
+
 
   Links:
   Heroku: https://sharevego-app.herokuapp.com/
@@ -24,11 +31,11 @@ Technologies:
 
 
 Features:
-  -comments
+  -Comments
   -Distance between items
   -Location of user and item
   -Messaging
-  -Notification when a message is received.
+  -Notification when a message is received
   -Uploading item images
   -Search by produce and distance from user
   -Karma rating
@@ -50,11 +57,15 @@ Bugs:
   -cloudinary and Heroku
   -Heroku in general (migrations)
   -messaging - sender_id & recipient_id
+  -geocoder - rendering
 
 Where next:
 
   -As a group we are keen to offer it to the community.
 
 How to get it set up locally:
-
-  -Send it to our local MPS.
+  -Clone the repo from github to your computer.
+  -cd into the repo
+  -Open terminal
+  -Run rails server
+  -Go to localhost 3000
