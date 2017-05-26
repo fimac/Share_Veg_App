@@ -26,7 +26,6 @@ class UsersController < ApplicationController
     end
     if @user.save
       session[:user_id] = @user.id
-      # added the below, so if a new user signs up they go to edit page
       redirect_to edit_user_path( @user )
     else
       render :new # Show them the Sign Up form again
@@ -56,7 +55,7 @@ class UsersController < ApplicationController
 
   def upvote
     @user = User.find_by(id: params['id'])
-    @user.upvote_by @current_user, :duplicate => true
+    @user.upvote_by @current_user
     redirect_to :back
     end
 

@@ -7,7 +7,6 @@ class ItemsController < ApplicationController
   def index
     @all_items = Item.all
 
-    # { :search => 'carrot', :distance => 5 }
 
     if params[:search]
 
