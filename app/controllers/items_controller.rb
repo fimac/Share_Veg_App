@@ -43,8 +43,6 @@ class ItemsController < ApplicationController
     item.save
 
     redirect_to "/items/#{item.id}"
-
-
   end
 
   def edit
