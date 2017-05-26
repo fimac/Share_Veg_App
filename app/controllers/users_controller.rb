@@ -5,7 +5,6 @@ class UsersController < ApplicationController
 
   def index
     @all_users = User.all
-    # @user = User.find_by(id: params['id'])
   end
 
   def show
@@ -55,18 +54,16 @@ class UsersController < ApplicationController
     user.destroy
     redirect_to "/users"
   end
-
+# Acts as votable
   def upvote
     @user = User.find_by(id: params['id'])
     @user.upvote_by @current_user, :duplicate => true
     redirect_to :back
     end
-
+# There are for the noitifications for the messaging system
     def notifications
-      # @all_conversations = Conversation.all
-      # get me every convo that i'm in, then get every message within those convo's
+
       @messages = Message.where(read: false)
-      # @messages = Message.all
 
       respond_to do |f|
         f.html {}
@@ -80,7 +77,7 @@ class UsersController < ApplicationController
 
         params.require(:user).permit(:name, :email, :password, :password_confirmation, :bio, :allergies, :likes, :dislikes, :mobile, :building_number, :street, :city, :state, :country, :slug)
       end
-
+# User Authentication
       def check_if_logged_out
         if @current_user
           flash[:error] = "You are already logged in"
