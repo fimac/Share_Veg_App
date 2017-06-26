@@ -60,9 +60,9 @@ ActiveRecord::Schema.define(version: 20170524061136) do
     t.text     "allergies"
     t.string   "slug"
     t.text     "password_digest"
-    t.text     "public_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.text     "public_id"
     t.text     "building_number"
     t.text     "street"
     t.text     "city"

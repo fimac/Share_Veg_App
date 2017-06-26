@@ -243,13 +243,6 @@ u10 = User.create({
     image: "http://www.talesfromthekitchenshed.com/sj-desford/uploads/2016/04/bread_rolls_pile600.jpg",
     user_id: u2.id
     })
-  i11 = Item.create({
-    name: "Butter",
-    description: "Massive tub of butter",
-    collected: "Item available now",
-    image: "http://www.organicdairyfarmers.com.au/images/8bit-new/home-product-panel_up_02.png",
-    user_id: u3.id
-    })
   i12 = Item.create({
     name: "Spinach",
     description: "Bag of fresh spinach ideal for green juicing or salads",
