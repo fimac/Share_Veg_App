@@ -247,7 +247,7 @@ u10 = User.create({
     name: "Butter",
     description: "Massive tub of butter",
     collected: "Item available now",
-    image: "http://www.organicdairyfarmers.com.au/images/8bit-new/home-product-panel_up_02.png",
+    image: "http://img.mumbaye.de/vmn/image/upload/v1477014311/butter_vfuyia.jpg",
     user_id: u3.id
     })
   i12 = Item.create({

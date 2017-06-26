@@ -18,7 +18,6 @@ class ItemsController < ApplicationController
         @all_items =  Item.search params[:search]
       end
       # raise "hell"
-
     else
       @all_items = Item.all.order("created_at DESC")
     end
@@ -42,8 +41,6 @@ class ItemsController < ApplicationController
     item.save
 
     redirect_to "/items/#{item.id}"
-
-
   end
 
   def edit
