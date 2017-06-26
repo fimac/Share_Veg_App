@@ -82,18 +82,14 @@
   </footer>
   <% if @current_user %>
   <script>
-
     $(document).ready(function(){
-
       var MESSAGE_TIMER = window.setInterval(function(){
         getMessages(<%= @current_user.id %>);
       }, 3000);
     })
-
     //   // var MESSAGE_TIMER = window.setInterval(function(){
     //   //   getMessages();
     //   // });
-
   </script>
   <% end %>
 
